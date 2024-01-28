@@ -15,7 +15,7 @@ import lombok.Data;
 @AllArgsConstructor
 @Entity
 @Table(name = "charactersheets")
-public class CharacterSheetEntity implements Serializable {
+public class CharacterSheetModel implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @Id
@@ -25,7 +25,7 @@ public class CharacterSheetEntity implements Serializable {
   private String description;
   private String characterClass;
 
-  public CharacterSheetEntity(String description, String characterClass) {
+  public CharacterSheetModel(String description, String characterClass) {
     this.description = description;
     this.characterClass = characterClass;
   }
