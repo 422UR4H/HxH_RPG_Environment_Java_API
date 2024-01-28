@@ -1,15 +1,15 @@
 package com.hxh_environment.api.infrastructure.gateways;
 
 import com.hxh_environment.api.domain.entity.CharacterSheet;
-import com.hxh_environment.api.infrastructure.persistence.CharacterSheetEntity;
+import com.hxh_environment.api.infrastructure.persistence.CharacterSheetModel;
 
 public class CharacterSheetEntityMapper {
-  CharacterSheetEntity toEntity(CharacterSheet characterSheetDomainObj) {
-    return new CharacterSheetEntity(characterSheetDomainObj.getDescription(),
+  CharacterSheetModel toEntity(CharacterSheet characterSheetDomainObj) {
+    return new CharacterSheetModel(characterSheetDomainObj.getDescription(),
         characterSheetDomainObj.getCharacterClass());
   }
 
-  CharacterSheet toDomainObj(CharacterSheetEntity entity) {
+  CharacterSheet toDomainObj(CharacterSheetModel entity) {
     return new CharacterSheet(entity.getDescription(), entity.getCharacterClass());
   }
 }

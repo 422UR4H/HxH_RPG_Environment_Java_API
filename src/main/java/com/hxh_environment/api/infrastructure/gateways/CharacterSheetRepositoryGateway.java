@@ -2,7 +2,7 @@ package com.hxh_environment.api.infrastructure.gateways;
 
 import com.hxh_environment.api.application.gateways.CharacterSheetGateway;
 import com.hxh_environment.api.domain.entity.CharacterSheet;
-import com.hxh_environment.api.infrastructure.persistence.CharacterSheetEntity;
+import com.hxh_environment.api.infrastructure.persistence.CharacterSheetModel;
 import com.hxh_environment.api.infrastructure.persistence.CharacterSheetRepository;
 
 public class CharacterSheetRepositoryGateway implements CharacterSheetGateway {
@@ -16,12 +16,12 @@ public class CharacterSheetRepositoryGateway implements CharacterSheetGateway {
 
   @Override
   public CharacterSheet createCharacterSheet(CharacterSheet characterSheetDomainObj) {
-    CharacterSheetEntity entity = entityMapper.toEntity(characterSheetDomainObj);
+    CharacterSheetModel entity = entityMapper.toEntity(characterSheetDomainObj);
     // TODO: change by a throwing exception
     if (entity == null) {
       return null;
     }
-    CharacterSheetEntity newEntity = repository.save(entity);
+    CharacterSheetModel newEntity = repository.save(entity);
     return entityMapper.toDomainObj(newEntity);
   }
   
