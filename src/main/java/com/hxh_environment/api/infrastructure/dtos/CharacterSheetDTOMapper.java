@@ -1,6 +1,6 @@
 package com.hxh_environment.api.infrastructure.dtos;
 
-import com.hxh_environment.api.domain.entity.CharacterSheet;
+import com.hxh_environment.api.domain.sheet.CharacterSheet;
 
 public class CharacterSheetDTOMapper {
   public CharacterSheet toDomainObj(CreateCharacterSheetDTO dto) {
