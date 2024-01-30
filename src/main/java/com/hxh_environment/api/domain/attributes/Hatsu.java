@@ -6,7 +6,7 @@ import com.hxh_environment.api.domain.entity.Experience;
 import com.hxh_environment.api.domain.enums.AttributeName;
 
 public class Hatsu extends Attribute {
-  private Map<AttributeName, Attribute> categories;
+  private Map<AttributeName, NenCategory> categories;
 
   private final void init() {
     categories.put(AttributeName.REF, new NenCategory(new Experience(), AttributeName.REF));
@@ -25,6 +25,10 @@ public class Hatsu extends Attribute {
   public Hatsu(AttributeName name) {
     super(new Experience(), name);
     init();
+  }
+
+  public final NenCategory get(AttributeName name) {
+    return categories.get(name);
   }
 
 }
