@@ -10,4 +10,8 @@ public final class Dice {
   public static final int roll(EDice d) {
     return 1 + random.nextInt(d.getSize());
   }
+
+  public static final int attributeTest() {
+    return roll(EDice.D10) + roll(EDice.D10);
+  }
 }

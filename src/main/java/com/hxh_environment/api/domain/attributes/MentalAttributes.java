@@ -11,17 +11,17 @@ import lombok.Data;
 import lombok.Getter;
 
 @Data
-public class PhysicalAttributes {
+public class MentalAttributes {
   @Getter
   private Experience exp;
 
-  private Map<AttributeName, PhysicalAttribute> attributes = new HashMap<>();
+  private Map<AttributeName, MentalAttribute> attributes = new HashMap<>();
 
   private final void initAttributes() {
-    attributes.put(AttributeName.STR, new PhysicalAttribute(AttributeName.STR));
-    attributes.put(AttributeName.DEX, new PhysicalAttribute(AttributeName.DEX));
-    attributes.put(AttributeName.CON, new PhysicalAttribute(AttributeName.CON));
-    attributes.put(AttributeName.VEL, new PhysicalAttribute(AttributeName.VEL));
+    attributes.put(AttributeName.INT, new MentalAttribute(AttributeName.INT));
+    attributes.put(AttributeName.CAR, new MentalAttribute(AttributeName.CAR));
+    attributes.put(AttributeName.SEN, new MentalAttribute(AttributeName.SEN));
+    attributes.put(AttributeName.RES, new MentalAttribute(AttributeName.RES));
   }
 
   private final void init() {
@@ -30,7 +30,7 @@ public class PhysicalAttributes {
   }
 
   // TODO: implement skills here
-  public PhysicalAttributes(List<Skill> skills) {
+  public MentalAttributes(List<Skill> skills) {
     init();
   }
 
@@ -38,7 +38,7 @@ public class PhysicalAttributes {
     return attributes.get(name).test(exp.getLvl());
   }
 
-  public PhysicalAttribute get(AttributeName name) {
+  public MentalAttribute get(AttributeName name) {
     return attributes.get(name);
   }
 }
