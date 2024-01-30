@@ -20,6 +20,21 @@ public class Experience {
     return points;
   }
 
+  public int getExpByLvl(int lvl) {
+    // TODO: Implement this
+    return points;
+  }
+
+  public int getCurrentExp() {
+    // TODO: Implement this
+    return points;
+  }
+
+  public int getExpToEvolve() {
+    // TODO: Implement this
+    return points;
+  }
+
   public int increasePoints(int exp) {
     // TODO: Implement this
     this.points += exp;
