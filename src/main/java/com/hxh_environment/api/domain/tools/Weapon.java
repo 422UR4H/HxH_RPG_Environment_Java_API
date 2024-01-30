@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import com.hxh_environment.api.domain.entity.Dice;
 import com.hxh_environment.api.domain.enums.EDice;
 
+import lombok.Getter;
+
 public class Weapon extends Tool implements IDamage {
+  @Getter
   private int fixedDamage;
 
   public Weapon(String name, ArrayList<EDice> dices, int fixedDamage) {

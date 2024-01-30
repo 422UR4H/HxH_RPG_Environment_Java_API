@@ -3,15 +3,13 @@ package com.hxh_environment.api.domain.attributes;
 import com.hxh_environment.api.domain.entity.Experience;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 
+@Data
 @AllArgsConstructor
 public class Skill {
-  @Getter
-  private Experience exp;
-
-  @Getter
-  private String name;
+  private final Experience exp;
+  private final String name;
 
   public Skill(String name) {
     this.exp = new Experience();

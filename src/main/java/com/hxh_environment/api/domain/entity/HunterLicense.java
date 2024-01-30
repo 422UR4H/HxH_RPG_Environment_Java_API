@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class HunterLicense {
-  private UUID id;
-  private String huntername;
+  private final UUID id;
+  private final String huntername;
   private String accesscode;
 }

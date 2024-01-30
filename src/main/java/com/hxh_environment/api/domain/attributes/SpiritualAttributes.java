@@ -6,15 +6,16 @@ import java.util.Map;
 import com.hxh_environment.api.domain.entity.Experience;
 import com.hxh_environment.api.domain.enums.AttributeName;
 
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
 
 @Data
 public class SpiritualAttributes {
-  @Getter
-  private Experience exp;
+  private final Experience exp;
 
-  private Map<AttributeName, SpiritualAttribute> attributes = new HashMap<>();
+  @Getter(AccessLevel.NONE)
+  private final Map<AttributeName, SpiritualAttribute> attributes = new HashMap<>();
 
   private final void initAttributes() {
     attributes.put(AttributeName.SPR, new SpiritualAttribute(AttributeName.SPR));
@@ -25,11 +26,11 @@ public class SpiritualAttributes {
     attributes.put(AttributeName.HTS, new SpiritualAttribute(AttributeName.HTS));
     attributes.put(AttributeName.RYU, new SpiritualAttribute(AttributeName.RYU));
     attributes.put(AttributeName.COA, new SpiritualAttribute(AttributeName.COA));
-    attributes.put(AttributeName.IN, new SpiritualAttribute(AttributeName.IN));
-    attributes.put(AttributeName.EN, new SpiritualAttribute(AttributeName.EN));
     attributes.put(AttributeName.KOU, new SpiritualAttribute(AttributeName.KOU));
     attributes.put(AttributeName.AOP, new SpiritualAttribute(AttributeName.AOP));
     attributes.put(AttributeName.MOP, new SpiritualAttribute(AttributeName.MOP));
+    attributes.put(AttributeName.EN, new SpiritualAttribute(AttributeName.EN));
+    attributes.put(AttributeName.IN, new SpiritualAttribute(AttributeName.IN));
   }
 
   public SpiritualAttributes() {
@@ -37,11 +38,11 @@ public class SpiritualAttributes {
     initAttributes();
   }
 
-  public int test(AttributeName name) {
+  public final int test(AttributeName name) {
     return attributes.get(name).test(exp.getLvl());
   }
 
-  public SpiritualAttribute get(AttributeName name) {
+  public final SpiritualAttribute get(AttributeName name) {
     return attributes.get(name);
   }
 

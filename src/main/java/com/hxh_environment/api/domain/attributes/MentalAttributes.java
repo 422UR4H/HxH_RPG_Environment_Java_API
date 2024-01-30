@@ -7,15 +7,13 @@ import java.util.Map;
 import com.hxh_environment.api.domain.entity.Experience;
 import com.hxh_environment.api.domain.enums.AttributeName;
 
-import lombok.Data;
 import lombok.Getter;
 
-@Data
 public class MentalAttributes {
   @Getter
   private Experience exp;
 
-  private Map<AttributeName, MentalAttribute> attributes = new HashMap<>();
+  private final Map<AttributeName, MentalAttribute> attributes = new HashMap<>();
 
   private final void initAttributes() {
     attributes.put(AttributeName.INT, new MentalAttribute(AttributeName.INT));
@@ -34,11 +32,15 @@ public class MentalAttributes {
     init();
   }
 
-  public int test(AttributeName name) {
+  public MentalAttributes() {
+    init();
+  }
+
+  public final int test(AttributeName name) {
     return attributes.get(name).test(exp.getLvl());
   }
 
-  public MentalAttribute get(AttributeName name) {
+  public final MentalAttribute get(AttributeName name) {
     return attributes.get(name);
   }
 }

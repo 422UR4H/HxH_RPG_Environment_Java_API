@@ -7,7 +7,7 @@ import com.hxh_environment.api.domain.entity.Experience;
 import com.hxh_environment.api.domain.enums.AttributeName;
 
 public class PhysicalAttribute extends Attribute {
-  private Map<String, Skill> skills = new HashMap<>();
+  private final Map<String, Skill> skills;
 
   public PhysicalAttribute(Experience exp, AttributeName name, HashMap<String, Skill> skills) {
     super(exp, name);
@@ -21,10 +21,10 @@ public class PhysicalAttribute extends Attribute {
 
   public PhysicalAttribute(AttributeName name) {
     super(new Experience(), name);
-    this.skills = new HashMap<String, Skill>();
+    this.skills = new HashMap<>();
   }
 
-  public Skill getSkill(String name) {
+  public final Skill getSkill(String name) {
     return skills.get(name);
   }
 }

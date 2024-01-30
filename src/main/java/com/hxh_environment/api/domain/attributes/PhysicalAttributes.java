@@ -7,15 +7,13 @@ import java.util.Map;
 import com.hxh_environment.api.domain.entity.Experience;
 import com.hxh_environment.api.domain.enums.AttributeName;
 
-import lombok.Data;
 import lombok.Getter;
 
-@Data
 public class PhysicalAttributes {
   @Getter
   private Experience exp;
 
-  private Map<AttributeName, PhysicalAttribute> attributes = new HashMap<>();
+  private final Map<AttributeName, PhysicalAttribute> attributes = new HashMap<>();
 
   private final void initAttributes() {
     attributes.put(AttributeName.STR, new PhysicalAttribute(AttributeName.STR));
@@ -34,11 +32,11 @@ public class PhysicalAttributes {
     init();
   }
 
-  public int test(AttributeName name) {
+  public final int test(AttributeName name) {
     return attributes.get(name).test(exp.getLvl());
   }
 
-  public PhysicalAttribute get(AttributeName name) {
+  public final PhysicalAttribute get(AttributeName name) {
     return attributes.get(name);
   }
 }
