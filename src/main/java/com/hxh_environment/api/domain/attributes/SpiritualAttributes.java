@@ -19,13 +19,16 @@ public class SpiritualAttributes {
 
   private final void initAttributes() {
     attributes.put(AttributeName.SPR, new SpiritualAttribute(AttributeName.SPR));
+
+    attributes.put(AttributeName.COA, new SpiritualAttribute(AttributeName.COA));
+
     attributes.put(AttributeName.TEN, new SpiritualAttribute(AttributeName.TEN));
     attributes.put(AttributeName.ZTS, new SpiritualAttribute(AttributeName.ZTS));
     attributes.put(AttributeName.REN, new SpiritualAttribute(AttributeName.REN));
     attributes.put(AttributeName.GYO, new SpiritualAttribute(AttributeName.GYO));
     attributes.put(AttributeName.HTS, new SpiritualAttribute(AttributeName.HTS));
+
     attributes.put(AttributeName.RYU, new SpiritualAttribute(AttributeName.RYU));
-    attributes.put(AttributeName.COA, new SpiritualAttribute(AttributeName.COA));
     attributes.put(AttributeName.KOU, new SpiritualAttribute(AttributeName.KOU));
     attributes.put(AttributeName.AOP, new SpiritualAttribute(AttributeName.AOP));
     attributes.put(AttributeName.MOP, new SpiritualAttribute(AttributeName.MOP));

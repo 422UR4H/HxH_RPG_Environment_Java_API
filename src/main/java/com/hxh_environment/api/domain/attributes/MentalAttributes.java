@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.hxh_environment.api.domain.entity.Experience;
 import com.hxh_environment.api.domain.enums.AttributeName;
+import com.hxh_environment.api.domain.skills.Skill;
 
 import lombok.Getter;
 
@@ -20,6 +21,7 @@ public class MentalAttributes {
     attributes.put(AttributeName.CAR, new MentalAttribute(AttributeName.CAR));
     attributes.put(AttributeName.SEN, new MentalAttribute(AttributeName.SEN));
     attributes.put(AttributeName.RES, new MentalAttribute(AttributeName.RES));
+    attributes.put(AttributeName.SAB, new MentalAttribute(AttributeName.SAB));
   }
 
   private final void init() {
