@@ -2,12 +2,10 @@ package com.hxh_environment.api.domain.attributes;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.hxh_environment.api.domain.entity.Experience;
 import com.hxh_environment.api.domain.enums.AttributeName;
-import com.hxh_environment.api.domain.skills.Skill;
 
 import lombok.Getter;
 
@@ -19,10 +17,10 @@ public class PhysicalAttributes {
   private final Map<AttributeName, GeneratedAttribute> genAttributes = new HashMap<>();
 
   private final void initAttributes() {
-    attributes.put(AttributeName.STR, new PhysicalAttribute(AttributeName.STR));
-    attributes.put(AttributeName.DEX, new PhysicalAttribute(AttributeName.DEX));
-    attributes.put(AttributeName.CON, new PhysicalAttribute(AttributeName.CON));
-    attributes.put(AttributeName.VEL, new PhysicalAttribute(AttributeName.VEL));
+    attributes.put(AttributeName.STR, new PrimaryAttribute(AttributeName.STR));
+    attributes.put(AttributeName.DEX, new PrimaryAttribute(AttributeName.DEX));
+    attributes.put(AttributeName.CON, new PrimaryAttribute(AttributeName.CON));
+    attributes.put(AttributeName.VEL, new PrimaryAttribute(AttributeName.VEL));
 
     ArrayList<PrimaryAttribute> dependencyListDef = new ArrayList<>();
     dependencyListDef.add(attributes.get(AttributeName.STR));
@@ -33,6 +31,11 @@ public class PhysicalAttributes {
     dependencyListAgi.add(attributes.get(AttributeName.STR));
     dependencyListAgi.add(attributes.get(AttributeName.VEL));
     genAttributes.put(AttributeName.AGI, new GeneratedAttribute(AttributeName.AGI, dependencyListAgi));
+
+    ArrayList<PrimaryAttribute> dependencyListAts = new ArrayList<>();
+    dependencyListAts.add(attributes.get(AttributeName.STR));
+    dependencyListAts.add(attributes.get(AttributeName.DEX));
+    genAttributes.put(AttributeName.ATS, new GeneratedAttribute(AttributeName.ATS, dependencyListAts));
   }
 
   private final void init() {
@@ -40,8 +43,7 @@ public class PhysicalAttributes {
     initAttributes();
   }
 
-  // TODO: implement skills here
-  public PhysicalAttributes(List<Skill> skills) {
+  public PhysicalAttributes() {
     init();
   }
 

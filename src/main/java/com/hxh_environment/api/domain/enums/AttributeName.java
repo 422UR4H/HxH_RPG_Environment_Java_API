@@ -7,10 +7,11 @@ public enum AttributeName {
   VEL("Velocity", AttributeType.PHYSICAL),
 
   INT("Intelligence", AttributeType.MENTAL),
-  CAR("Charisma", AttributeType.MENTAL),
+  CHA("Charisma", AttributeType.MENTAL),
   SEN("Sense", AttributeType.MENTAL),
   RES("Resilience", AttributeType.MENTAL),
-  SAB("Sabedoria", AttributeType.MENTAL),
+  WIS("Sabedoria", AttributeType.MENTAL),
+  SAN("Sanity", AttributeType.MENTAL),
 
   SPR("Spirit", AttributeType.SPIRITUAL),
   TEN("Ten", AttributeType.SPIRITUAL),
@@ -33,8 +34,9 @@ public enum AttributeName {
   MAN("Manipulation", AttributeType.NEN_CATEGORY),
   ESP("Specialization", AttributeType.NEN_CATEGORY),
 
-  DEF("Defense", AttributeType.NEN_CATEGORY),
-  AGI("Agilidade", AttributeType.NEN_CATEGORY);
+  DEF("Defense", AttributeType.PHYSICAL),
+  ATS("Action Speed", AttributeType.PHYSICAL),
+  AGI("Agilidade", AttributeType.PHYSICAL);
 
   private final AttributeType type;
 

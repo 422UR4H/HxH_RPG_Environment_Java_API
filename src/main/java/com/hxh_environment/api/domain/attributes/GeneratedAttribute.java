@@ -24,7 +24,7 @@ public class GeneratedAttribute extends Attribute implements IObserver {
     super(new Experience(), name);
     this.primaryAttributes = primaryAttributes;
 
-    primaryAttributes.forEach((attr) -> {
+    this.primaryAttributes.forEach((attr) -> {
       attr.subscribe(this);
     });
     this.update();

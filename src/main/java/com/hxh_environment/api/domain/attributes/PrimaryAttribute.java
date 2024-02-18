@@ -7,7 +7,7 @@ import com.hxh_environment.api.domain.enums.AttributeName;
 import com.hxh_environment.api.domain.pubsub.IObserver;
 import com.hxh_environment.api.domain.pubsub.ISubject;
 
-public abstract class PrimaryAttribute extends Attribute implements ISubject {
+public class PrimaryAttribute extends Attribute implements ISubject {
 
   private final ArrayList<IObserver> observers = new ArrayList<>();
 
