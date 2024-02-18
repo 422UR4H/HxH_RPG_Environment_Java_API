@@ -15,22 +15,25 @@ public class SpiritualAttributes {
   private final Experience exp;
 
   @Getter(AccessLevel.NONE)
-  private final Map<AttributeName, SpiritualAttribute> attributes = new HashMap<>();
+  private final Map<AttributeName, PrimaryAttribute> attributes = new HashMap<>();
 
   private final void initAttributes() {
-    attributes.put(AttributeName.SPR, new SpiritualAttribute(AttributeName.SPR));
-    attributes.put(AttributeName.TEN, new SpiritualAttribute(AttributeName.TEN));
-    attributes.put(AttributeName.ZTS, new SpiritualAttribute(AttributeName.ZTS));
-    attributes.put(AttributeName.REN, new SpiritualAttribute(AttributeName.REN));
-    attributes.put(AttributeName.GYO, new SpiritualAttribute(AttributeName.GYO));
-    attributes.put(AttributeName.HTS, new SpiritualAttribute(AttributeName.HTS));
-    attributes.put(AttributeName.RYU, new SpiritualAttribute(AttributeName.RYU));
-    attributes.put(AttributeName.COA, new SpiritualAttribute(AttributeName.COA));
-    attributes.put(AttributeName.KOU, new SpiritualAttribute(AttributeName.KOU));
-    attributes.put(AttributeName.AOP, new SpiritualAttribute(AttributeName.AOP));
-    attributes.put(AttributeName.MOP, new SpiritualAttribute(AttributeName.MOP));
-    attributes.put(AttributeName.EN, new SpiritualAttribute(AttributeName.EN));
-    attributes.put(AttributeName.IN, new SpiritualAttribute(AttributeName.IN));
+    attributes.put(AttributeName.SPR, new PrimaryAttribute(AttributeName.SPR));
+
+    attributes.put(AttributeName.COA, new PrimaryAttribute(AttributeName.COA));
+
+    attributes.put(AttributeName.TEN, new PrimaryAttribute(AttributeName.TEN));
+    attributes.put(AttributeName.ZTS, new PrimaryAttribute(AttributeName.ZTS));
+    attributes.put(AttributeName.REN, new PrimaryAttribute(AttributeName.REN));
+    attributes.put(AttributeName.GYO, new PrimaryAttribute(AttributeName.GYO));
+    attributes.put(AttributeName.HTS, new PrimaryAttribute(AttributeName.HTS));
+
+    attributes.put(AttributeName.RYU, new PrimaryAttribute(AttributeName.RYU));
+    attributes.put(AttributeName.KOU, new PrimaryAttribute(AttributeName.KOU));
+    attributes.put(AttributeName.AOP, new PrimaryAttribute(AttributeName.AOP));
+    attributes.put(AttributeName.MOP, new PrimaryAttribute(AttributeName.MOP));
+    attributes.put(AttributeName.EN, new PrimaryAttribute(AttributeName.EN));
+    attributes.put(AttributeName.IN, new PrimaryAttribute(AttributeName.IN));
   }
 
   public SpiritualAttributes() {
@@ -42,7 +45,7 @@ public class SpiritualAttributes {
     return attributes.get(name).test(exp.getLvl());
   }
 
-  public final SpiritualAttribute get(AttributeName name) {
+  public final PrimaryAttribute get(AttributeName name) {
     return attributes.get(name);
   }
 

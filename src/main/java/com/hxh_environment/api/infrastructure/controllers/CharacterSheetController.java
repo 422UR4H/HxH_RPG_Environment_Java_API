@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hxh_environment.api.application.usecases.CreateCharacterSheetInteractor;
-import com.hxh_environment.api.domain.entity.CharacterSheet;
+import com.hxh_environment.api.domain.sheet.CharacterSheet;
 import com.hxh_environment.api.infrastructure.dtos.CharacterSheetDTOMapper;
 import com.hxh_environment.api.infrastructure.dtos.CreateCharacterSheetDTO;
 import com.hxh_environment.api.infrastructure.dtos.OutputCharacterSheetDTO;

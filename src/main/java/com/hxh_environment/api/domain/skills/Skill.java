@@ -1,4 +1,4 @@
-package com.hxh_environment.api.domain.attributes;
+package com.hxh_environment.api.domain.skills;
 
 import com.hxh_environment.api.domain.entity.Experience;
 

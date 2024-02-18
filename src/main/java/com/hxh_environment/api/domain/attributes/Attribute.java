@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public abstract class Attribute {
-  private final Experience exp;
+  private Experience exp;
   private final AttributeName name;
 
   public int test(int lvl) {
