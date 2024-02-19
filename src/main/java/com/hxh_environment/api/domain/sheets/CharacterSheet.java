@@ -1,12 +1,12 @@
 package com.hxh_environment.api.domain.sheets;
 
-import com.hxh_environment.api.domain.attributes.SpiritualAttributes;
 import com.hxh_environment.api.domain.classes.CharacterClass;
 import com.hxh_environment.api.domain.entity.Profile;
 import com.hxh_environment.api.domain.enums.AttributeName;
 import com.hxh_environment.api.domain.experience.Experience;
 import com.hxh_environment.api.domain.mentals.MentalAttributes;
 import com.hxh_environment.api.domain.physicals.PhysicalAttributes;
+import com.hxh_environment.api.domain.spirituals.SpiritualAttributes;
 
 import lombok.AllArgsConstructor;
 import lombok.AccessLevel;

@@ -5,20 +5,20 @@ import java.util.Map;
 
 import com.hxh_environment.api.domain.enums.AttributeName;
 import com.hxh_environment.api.domain.enums.SkillName;
-import com.hxh_environment.api.domain.experience.Experience;
+import com.hxh_environment.api.domain.experience.IUpgradable;
 import com.hxh_environment.api.domain.skills.PrimarySkill;
 
 import lombok.Getter;
 
-public class PhysicalSkills {
+public class PhysicalSkills implements IUpgradable {
   @Getter
-  private final Experience exp;
+  private final int exp;
 
   private final Map<SkillName, PrimarySkill> skills = new HashMap<>();
 
   public PhysicalSkills(PhysicalAttributes attr) {
 
-    this.exp = new Experience();
+    this.exp = 0;
 
     skills.put(SkillName.CLIMB, new PrimarySkill(SkillName.CLIMB, attr.get(AttributeName.STR)));
     skills.put(SkillName.PUSH, new PrimarySkill(SkillName.PUSH, attr.get(AttributeName.STR)));
@@ -43,6 +43,36 @@ public class PhysicalSkills {
 
   public final PrimarySkill get(SkillName name) {
     return skills.get(name);
+  }
+
+  @Override
+  public int getLvl() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getLvl'");
+  }
+
+  @Override
+  public int getCurrentExp() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getCurrentExp'");
+  }
+
+  @Override
+  public int getExpToEvolve() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getExpToEvolve'");
+  }
+
+  @Override
+  public int increasePoints(int exp) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'increasePoints'");
+  }
+
+  @Override
+  public void upgreade() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'upgreade'");
   }
 
 }

@@ -5,18 +5,23 @@ import com.hxh_environment.api.domain.physicals.PhysicalExperience;
 import com.hxh_environment.api.domain.skills.SkillExperience;
 import com.hxh_environment.api.domain.spirituals.SpiritualExperience;
 
-import lombok.Data;
+import lombok.Getter;
 
-@Data
-public class CharacterExperience extends Experience {
+public final class CharacterExperience implements IUpgradable {
 
+  @Getter
+  private int exp;
+  @Getter
   private final SpiritualExperience spiritualExperience;
+  @Getter
   private final PhysicalExperience physicalExperience;
+  @Getter
   private final MentalExperience mentalExperience;
+  @Getter
   private final SkillExperience skillExperience;
 
   public CharacterExperience() {
-    super();
+    this.exp = 0;
 
     this.spiritualExperience = new SpiritualExperience();
     this.physicalExperience = new PhysicalExperience();
@@ -30,7 +35,7 @@ public class CharacterExperience extends Experience {
       MentalExperience mental,
       SkillExperience skill) {
 
-    super(spiritual.getPoints() + physical.getPoints() + mental.getPoints() + skill.getPoints());
+    this.exp = spiritual.getExp() + physical.getExp() + mental.getExp() + skill.getExp();
 
     this.spiritualExperience = spiritual;
     this.physicalExperience = physical;
@@ -40,6 +45,36 @@ public class CharacterExperience extends Experience {
 
   public void update(int points) {
     increasePoints(points);
+  }
+
+  @Override
+  public int getLvl() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getLvl'");
+  }
+
+  @Override
+  public int getCurrentExp() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getCurrentExp'");
+  }
+
+  @Override
+  public int getExpToEvolve() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getExpToEvolve'");
+  }
+
+  @Override
+  public int increasePoints(int exp) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'increasePoints'");
+  }
+
+  @Override
+  public void upgreade() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'upgreade'");
   }
 
 }

@@ -2,21 +2,23 @@ package com.hxh_environment.api.domain.attributes;
 
 import java.util.ArrayList;
 
-import com.hxh_environment.api.domain.enums.AttributeName;
-import com.hxh_environment.api.domain.experience.Experience;
 import com.hxh_environment.api.domain.pubsub.IObserver;
 import com.hxh_environment.api.domain.pubsub.ISubject;
 
-public class PrimaryAttribute extends Attribute implements ISubject {
+import lombok.Getter;
 
+public class PrimaryAttribute implements IAttribute, ISubject {
+
+  @Getter
+  private int exp;
   private final ArrayList<IObserver> observers = new ArrayList<>();
 
-  public PrimaryAttribute(Experience exp, AttributeName name) {
-    super(exp, name);
+  public PrimaryAttribute(int exp) {
+    this.exp = exp;
   }
 
-  public PrimaryAttribute(AttributeName name) {
-    super(new Experience(), name);
+  public PrimaryAttribute() {
+    this.exp = 0;
   }
 
   @Override
@@ -42,6 +44,36 @@ public class PrimaryAttribute extends Attribute implements ISubject {
   @Override
   public void notifyAllObservers() {
     observers.forEach(o -> o.update());
+  }
+
+  @Override
+  public int getLvl() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getLvl'");
+  }
+
+  @Override
+  public int getCurrentExp() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getCurrentExp'");
+  }
+
+  @Override
+  public int getExpToEvolve() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getExpToEvolve'");
+  }
+
+  @Override
+  public int increasePoints(int exp) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'increasePoints'");
+  }
+
+  @Override
+  public void upgreade() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'upgreade'");
   }
 
 }

@@ -1,16 +1,47 @@
 package com.hxh_environment.api.domain.attributes;
 
-import com.hxh_environment.api.domain.enums.AttributeName;
-import com.hxh_environment.api.domain.experience.Experience;
+import lombok.Getter;
 
-public class NenCategory extends Attribute {
+public class NenCategory implements IAttribute {
+  @Getter
+  private int exp;
 
-  public NenCategory(Experience exp, AttributeName name) {
-    super(exp, name);
+  public NenCategory(int exp) {
+    this.exp = exp;
   }
 
-  public NenCategory(AttributeName name) {
-    super(new Experience(), name);
+  public NenCategory() {
+    this.exp = 0;
+  }
+
+  @Override
+  public int getLvl() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getLvl'");
+  }
+
+  @Override
+  public int getCurrentExp() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getCurrentExp'");
+  }
+
+  @Override
+  public int getExpToEvolve() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getExpToEvolve'");
+  }
+
+  @Override
+  public int increasePoints(int exp) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'increasePoints'");
+  }
+
+  @Override
+  public void upgreade() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'upgreade'");
   }
 
 }
