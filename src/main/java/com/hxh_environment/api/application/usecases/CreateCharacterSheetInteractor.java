@@ -1,7 +1,7 @@
 package com.hxh_environment.api.application.usecases;
 
 import com.hxh_environment.api.application.gateways.CharacterSheetGateway;
-import com.hxh_environment.api.domain.sheet.CharacterSheet;
+import com.hxh_environment.api.domain.sheets.CharacterSheet;
 
 public class CreateCharacterSheetInteractor {
   private CharacterSheetGateway gateway;

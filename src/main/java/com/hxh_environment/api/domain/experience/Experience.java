@@ -1,4 +1,4 @@
-package com.hxh_environment.api.domain.entity;
+package com.hxh_environment.api.domain.experience;
 
 import lombok.Getter;
 

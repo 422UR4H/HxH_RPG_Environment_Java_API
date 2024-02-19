@@ -1,22 +1,31 @@
-package com.hxh_environment.api.domain.attributes;
+package com.hxh_environment.api.domain.skills;
 
 import java.util.ArrayList;
 
-import com.hxh_environment.api.domain.enums.AttributeName;
+import com.hxh_environment.api.domain.attributes.PrimaryAttribute;
+import com.hxh_environment.api.domain.entity.Dice;
+import com.hxh_environment.api.domain.enums.SkillName;
 import com.hxh_environment.api.domain.experience.Experience;
 import com.hxh_environment.api.domain.pubsub.IObserver;
 import com.hxh_environment.api.domain.pubsub.ISubject;
 
-public class PrimaryAttribute extends Attribute implements ISubject {
+public class PrimarySkill extends Skill implements ISubject {
 
+  private final PrimaryAttribute attribute;
   private final ArrayList<IObserver> observers = new ArrayList<>();
 
-  public PrimaryAttribute(Experience exp, AttributeName name) {
+  public PrimarySkill(SkillName name, PrimaryAttribute attribute, Experience exp) {
     super(exp, name);
+    this.attribute = attribute;
   }
 
-  public PrimaryAttribute(AttributeName name) {
-    super(new Experience(), name);
+  public PrimarySkill(SkillName name, PrimaryAttribute attribute) {
+    super(name);
+    this.attribute = attribute;
+  }
+
+  public int test(int lvl) {
+    return Dice.attributeTest() + attribute.getExp().getLvl() + (int) Math.floor(lvl / 2);
   }
 
   @Override

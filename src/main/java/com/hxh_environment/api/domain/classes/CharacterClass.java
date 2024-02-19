@@ -3,8 +3,8 @@ package com.hxh_environment.api.domain.classes;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.hxh_environment.api.domain.attributes.PhysicalAttributes;
 import com.hxh_environment.api.domain.enums.ClassName;
+import com.hxh_environment.api.domain.physicals.PhysicalAttributes;
 import com.hxh_environment.api.domain.tools.Weapon;
 
 import lombok.AllArgsConstructor;

@@ -1,10 +1,11 @@
-package com.hxh_environment.api.domain.attributes;
+package com.hxh_environment.api.domain.spirituals;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.hxh_environment.api.domain.entity.Experience;
+import com.hxh_environment.api.domain.attributes.PrimaryAttribute;
 import com.hxh_environment.api.domain.enums.AttributeName;
+import com.hxh_environment.api.domain.experience.Experience;
 
 import lombok.AccessLevel;
 import lombok.Data;
