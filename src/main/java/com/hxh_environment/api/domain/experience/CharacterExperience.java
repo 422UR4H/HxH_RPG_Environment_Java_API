@@ -1,5 +1,7 @@
 package com.hxh_environment.api.domain.experience;
 
+import java.util.ArrayList;
+
 import com.hxh_environment.api.domain.mentals.MentalExperience;
 import com.hxh_environment.api.domain.physicals.PhysicalExperience;
 import com.hxh_environment.api.domain.skills.SkillExperience;
@@ -12,6 +14,12 @@ public final class CharacterExperience implements IUpgradable {
   @Getter
   private int exp;
   @Getter
+  private int lvl;
+  @Getter
+  private int talent;
+  @Getter
+  private final ArrayList<Integer> expTable = new ArrayList<>();
+  @Getter
   private final SpiritualExperience spiritualExperience;
   @Getter
   private final PhysicalExperience physicalExperience;
@@ -23,10 +31,10 @@ public final class CharacterExperience implements IUpgradable {
   public CharacterExperience() {
     this.exp = 0;
 
-    this.spiritualExperience = new SpiritualExperience();
-    this.physicalExperience = new PhysicalExperience();
-    this.mentalExperience = new MentalExperience();
-    this.skillExperience = new SkillExperience();
+    this.spiritualExperience = new SpiritualExperience(this);
+    this.physicalExperience = new PhysicalExperience(this);
+    this.mentalExperience = new MentalExperience(this);
+    this.skillExperience = new SkillExperience(this);
   }
 
   public CharacterExperience(
@@ -43,38 +51,26 @@ public final class CharacterExperience implements IUpgradable {
     this.skillExperience = skill;
   }
 
-  public void update(int points) {
-    increasePoints(points);
+  // TODO: refactor to upgrade event
+  @Override
+  public final boolean increaseExp(int exp) {
+    this.exp += exp;
+
+    if (upgrade()) {
+      return true;
+    }
+    return false;
   }
 
   @Override
-  public int getLvl() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getLvl'");
-  }
+  public final boolean upgrade() {
+    int newLvl = calculateLvl();
 
-  @Override
-  public int getCurrentExp() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getCurrentExp'");
-  }
-
-  @Override
-  public int getExpToEvolve() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getExpToEvolve'");
-  }
-
-  @Override
-  public int increasePoints(int exp) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'increasePoints'");
-  }
-
-  @Override
-  public void upgreade() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'upgreade'");
+    if (this.lvl != newLvl) {
+      this.lvl = newLvl;
+      return true;
+    }
+    return false;
   }
 
 }

@@ -1,48 +1,18 @@
 package com.hxh_environment.api.domain.physicals;
 
-import com.hxh_environment.api.domain.experience.IUpgradable;
+import com.hxh_environment.api.domain.experience.CharacterExperience;
+import com.hxh_environment.api.domain.experience.TypeExperience;
 
-import lombok.Getter;
+public class PhysicalExperience extends TypeExperience {
 
-public class PhysicalExperience implements IUpgradable {
-  @Getter
-  private int exp;
-
-  public PhysicalExperience(int exp) {
-    this.exp = exp;
+  public PhysicalExperience(CharacterExperience characterExp, int exp) {
+    super(characterExp, exp);
   }
 
-  public PhysicalExperience() {
-    this.exp = 0;
+  public PhysicalExperience(CharacterExperience characterExp) {
+    super(characterExp);
   }
 
-  @Override
-  public int getLvl() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getLvl'");
-  }
+  // TODO: Override initExpTable
 
-  @Override
-  public int getCurrentExp() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getCurrentExp'");
-  }
-
-  @Override
-  public int getExpToEvolve() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getExpToEvolve'");
-  }
-
-  @Override
-  public int increasePoints(int exp) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'increasePoints'");
-  }
-
-  @Override
-  public void upgreade() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'upgreade'");
-  }
 }
