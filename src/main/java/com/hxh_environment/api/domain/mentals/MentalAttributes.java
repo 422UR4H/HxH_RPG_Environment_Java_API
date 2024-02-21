@@ -16,6 +16,10 @@ public class MentalAttributes {
     attributes.put(AttributeName.SEN, new PrimaryAttribute(mentalExp));
     attributes.put(AttributeName.RES, new PrimaryAttribute(mentalExp));
     attributes.put(AttributeName.WIS, new PrimaryAttribute(mentalExp));
+
+    for (AttributeName name : attributes.keySet()) {
+      attributes.get(name).init(0);
+    }
   }
 
   public final PrimaryAttribute get(AttributeName name) {

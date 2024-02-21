@@ -42,6 +42,14 @@ public class PhysicalAttributes {
     dependencyListVel.add(genAttributes.get(AttributeName.AGI));
     attributes.put(AttributeName.VEL, new PrimaryAttribute(dependencyListVel));
 
+    for (AttributeName name : attributes.keySet()) {
+      attributes.get(name).init(0);
+    }
+
+    for (AttributeName name : genAttributes.keySet()) {
+      genAttributes.get(name).init(0);
+    }
+
   }
 
   public final PrimaryAttribute get(AttributeName name) {

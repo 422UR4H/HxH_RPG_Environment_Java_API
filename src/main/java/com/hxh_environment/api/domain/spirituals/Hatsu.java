@@ -17,6 +17,10 @@ public class Hatsu extends PrimaryAttribute {
     categories.put(AttributeName.MAN, new NenCategory(this));
     categories.put(AttributeName.MAT, new NenCategory(this));
     categories.put(AttributeName.ESP, new NenCategory(this));
+
+    for (AttributeName name : categories.keySet()) {
+      categories.get(name).init(0);
+    }
   }
 
   public Hatsu(SpiritualExperience spiritualExp) {

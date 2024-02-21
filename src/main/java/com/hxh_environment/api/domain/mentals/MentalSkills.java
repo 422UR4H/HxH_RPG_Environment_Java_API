@@ -54,6 +54,10 @@ public class MentalSkills extends TypeSkill {
     skills.put(SkillName.SURVIVAL, new PrimarySkill(SkillName.SURVIVAL, null, this));
     skills.put(SkillName.ANIMAL_HANDLER, new PrimarySkill(SkillName.ANIMAL_HANDLER, null, this));
 
+    for (SkillName name : skills.keySet()) {
+      skills.get(name).init(0);
+    }
+
   }
 
   public final PrimarySkill get(SkillName name) {
