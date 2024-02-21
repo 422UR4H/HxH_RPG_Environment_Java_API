@@ -6,12 +6,9 @@ import com.hxh_environment.api.domain.experience.IUpgradable;
 
 import lombok.Getter;
 
-public class GeneratedAttribute implements IAttribute {
+public class GeneratedAttribute extends Attribute {
   @Getter
   private int exp;
-
-  @Getter
-  private int lvl;
 
   @Getter
   private final ArrayList<Integer> expTable = new ArrayList<>();
@@ -19,15 +16,15 @@ public class GeneratedAttribute implements IAttribute {
   private final IUpgradable typeExperience;
 
   public GeneratedAttribute(IUpgradable typeExperience, int exp) {
+    super();
     this.typeExperience = typeExperience;
     this.exp = exp;
-    this.lvl = 0;
   }
 
   public GeneratedAttribute(IUpgradable typeExperience) {
+    super();
     this.typeExperience = typeExperience;
     this.exp = 0;
-    this.lvl = 0;
   }
 
   @Override
@@ -36,17 +33,6 @@ public class GeneratedAttribute implements IAttribute {
     typeExperience.increaseExp(exp);
 
     if (upgrade()) {
-      return true;
-    }
-    return false;
-  }
-
-  @Override
-  public final boolean upgrade() {
-    int newLvl = calculateLvl();
-
-    if (this.lvl != newLvl) {
-      this.lvl = newLvl;
       return true;
     }
     return false;
