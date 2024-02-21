@@ -22,16 +22,19 @@ public class PrimaryAttribute implements IAttribute {
   public PrimaryAttribute(ArrayList<IUpgradable> upgradables, int exp) {
     this.upgradables = upgradables;
     this.exp = exp;
+    this.lvl = 0;
   }
-
+  
   public PrimaryAttribute(ArrayList<IUpgradable> upgradables) {
     this.upgradables = upgradables;
     this.exp = 0;
+    this.lvl = 0;
   }
-
+  
   public PrimaryAttribute(IUpgradable upgradable) {
     this.upgradables = new ArrayList<>(List.of(upgradable));
     this.exp = 0;
+    this.lvl = 0;
   }
 
   @Override

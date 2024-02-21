@@ -40,6 +40,9 @@ public final class CharacterExperience implements IUpgradable {
     this.physicalExperience = physical;
     this.mentalExperience = mental;
     this.skillExperience = skill;
+    this.exp = 0;
+    this.lvl = 0;
+    this.talent = 0;
   }
 
   // TODO: refactor to upgrade event

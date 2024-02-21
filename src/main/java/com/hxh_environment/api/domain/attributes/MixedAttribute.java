@@ -21,11 +21,13 @@ public class MixedAttribute implements IAttribute {
   public MixedAttribute(ArrayList<IUpgradable> upgradables, int exp) {
     this.upgradables = upgradables;
     this.exp = exp;
+    this.lvl = 0;
   }
 
   public MixedAttribute(ArrayList<IUpgradable> upgradables) {
     this.upgradables = upgradables;
     this.exp = 0;
+    this.lvl = 0;
   }
 
   @Override

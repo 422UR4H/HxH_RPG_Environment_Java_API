@@ -21,11 +21,13 @@ public class GeneratedAttribute implements IAttribute {
   public GeneratedAttribute(IUpgradable typeExperience, int exp) {
     this.typeExperience = typeExperience;
     this.exp = exp;
+    this.lvl = 0;
   }
 
   public GeneratedAttribute(IUpgradable typeExperience) {
     this.typeExperience = typeExperience;
     this.exp = 0;
+    this.lvl = 0;
   }
 
   @Override

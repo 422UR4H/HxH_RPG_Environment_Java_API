@@ -19,11 +19,13 @@ public abstract class TypeExperience implements IUpgradable {
   public TypeExperience(CharacterExperience characterExp, int exp) {
     this.characterExp = characterExp;
     this.exp = exp;
+    this.lvl = 0;
   }
-
+  
   public TypeExperience(CharacterExperience characterExp) {
     this.characterExp = characterExp;
     this.exp = 0;
+    this.lvl = 0;
   }
 
   // TODO: refactor to upgrade event
