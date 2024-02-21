@@ -1,14 +1,17 @@
-package com.hxh_environment.api.domain.skills;
-
-import com.hxh_environment.api.domain.experience.IUpgradable;
+package com.hxh_environment.api.domain.experience;
 
 import lombok.Getter;
 
-public abstract class TypeSkill implements IUpgradable {
+public abstract class Level implements IUpgradable {
 
   @Getter
   private int lvl;
 
+  public Level(int lvl) {
+    this.lvl = lvl;
+  }
+
+  // TODO: refactor to upgrade event
   @Override
   public final boolean upgrade() {
     int newLvl = calculateLvl();

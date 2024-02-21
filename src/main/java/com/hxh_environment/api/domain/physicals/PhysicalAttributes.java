@@ -52,11 +52,11 @@ public class PhysicalAttributes {
 
   }
 
-  public final PrimaryAttribute get(AttributeName name) {
+  public final PrimaryAttribute getPrimary(AttributeName name) {
     return attributes.get(name);
   }
 
-  public final GeneratedAttribute getGen(AttributeName name) {
+  public final GeneratedAttribute getGenerated(AttributeName name) {
     return genAttributes.get(name);
   }
 }

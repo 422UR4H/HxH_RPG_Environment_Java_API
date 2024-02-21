@@ -6,12 +6,9 @@ import com.hxh_environment.api.domain.experience.IUpgradable;
 
 import lombok.Getter;
 
-public class MixedAttribute implements IAttribute {
+public class MixedAttribute extends Attribute {
   @Getter
   private int exp;
-
-  @Getter
-  private int lvl;
 
   @Getter
   private final ArrayList<Integer> expTable = new ArrayList<>();
@@ -19,15 +16,15 @@ public class MixedAttribute implements IAttribute {
   private final ArrayList<IUpgradable> upgradables;
 
   public MixedAttribute(ArrayList<IUpgradable> upgradables, int exp) {
+    super();
     this.upgradables = upgradables;
     this.exp = exp;
-    this.lvl = 0;
   }
 
   public MixedAttribute(ArrayList<IUpgradable> upgradables) {
+    super();
     this.upgradables = upgradables;
     this.exp = 0;
-    this.lvl = 0;
   }
 
   @Override
@@ -36,17 +33,6 @@ public class MixedAttribute implements IAttribute {
     upgradables.forEach((u) -> u.increaseExp(exp));
 
     if (upgrade()) {
-      return true;
-    }
-    return false;
-  }
-
-  @Override
-  public final boolean upgrade() {
-    int newLvl = calculateLvl();
-
-    if (this.lvl != newLvl) {
-      this.lvl = newLvl;
       return true;
     }
     return false;

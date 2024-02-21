@@ -4,12 +4,9 @@ import java.util.ArrayList;
 
 import lombok.Getter;
 
-public abstract class TypeExperience implements IUpgradable {
+public abstract class TypeExperience extends Level {
   @Getter
   private int exp;
-
-  @Getter
-  private int lvl;
 
   @Getter
   private final ArrayList<Integer> expTable = new ArrayList<>();
@@ -17,15 +14,15 @@ public abstract class TypeExperience implements IUpgradable {
   private final CharacterExperience characterExp;
 
   public TypeExperience(CharacterExperience characterExp, int exp) {
+    super(0);
     this.characterExp = characterExp;
     this.exp = exp;
-    this.lvl = 0;
   }
   
   public TypeExperience(CharacterExperience characterExp) {
+    super(0);
     this.characterExp = characterExp;
     this.exp = 0;
-    this.lvl = 0;
   }
 
   // TODO: refactor to upgrade event
@@ -35,17 +32,6 @@ public abstract class TypeExperience implements IUpgradable {
     this.characterExp.increaseExp(exp);
 
     if (upgrade()) {
-      return true;
-    }
-    return false;
-  }
-
-  @Override
-  public final boolean upgrade() {
-    int newLvl = calculateLvl();
-
-    if (this.lvl != newLvl) {
-      this.lvl = newLvl;
       return true;
     }
     return false;

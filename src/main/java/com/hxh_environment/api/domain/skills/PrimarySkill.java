@@ -11,9 +11,6 @@ public class PrimarySkill extends Skill {
   @Getter
   private int exp;
 
-  @Getter
-  private int lvl;
-
   private final PrimaryAttribute attribute;
 
   private final IUpgradable typeSkills;
@@ -33,17 +30,6 @@ public class PrimarySkill extends Skill {
     this.typeSkills.increaseExp(exp);
 
     if (upgrade()) {
-      return true;
-    }
-    return false;
-  }
-
-  @Override
-  public final boolean upgrade() {
-    int newLvl = calculateLvl();
-
-    if (this.lvl != newLvl) {
-      this.lvl = newLvl;
       return true;
     }
     return false;

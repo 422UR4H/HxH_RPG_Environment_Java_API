@@ -9,12 +9,10 @@ import com.hxh_environment.api.domain.spirituals.SpiritualExperience;
 
 import lombok.Getter;
 
-public final class CharacterExperience implements IUpgradable {
+public final class CharacterExperience extends Level {
 
   @Getter
   private int exp;
-  @Getter
-  private int lvl;
   @Getter
   private int talent;
   @Getter
@@ -34,15 +32,16 @@ public final class CharacterExperience implements IUpgradable {
       MentalExperience mental,
       SkillExperience skill) {
 
+    super(1);
+
     // this.exp = spiritual.getExp() + physical.getExp() + mental.getExp() + skill.getExp();
 
     this.spiritualExperience = spiritual;
     this.physicalExperience = physical;
     this.mentalExperience = mental;
     this.skillExperience = skill;
-    this.exp = 0;
-    this.lvl = 0;
     this.talent = 0;
+    this.exp = 0;
   }
 
   // TODO: refactor to upgrade event
@@ -56,15 +55,6 @@ public final class CharacterExperience implements IUpgradable {
     return false;
   }
 
-  @Override
-  public final boolean upgrade() {
-    int newLvl = calculateLvl();
-
-    if (this.lvl != newLvl) {
-      this.lvl = newLvl;
-      return true;
-    }
-    return false;
-  }
+  // TODO: parameterize expTable to implement initExpTable
 
 }
