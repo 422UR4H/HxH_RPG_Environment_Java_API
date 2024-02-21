@@ -1,12 +1,10 @@
-package com.hxh_environment.api.domain.attributes;
+package com.hxh_environment.api.domain.experience;
 
 import java.util.ArrayList;
 
-import com.hxh_environment.api.domain.experience.IUpgradable;
-
 import lombok.Getter;
 
-public class GeneratedAttribute implements IAttribute {
+public abstract class TypeExperience implements IUpgradable {
   @Getter
   private int exp;
 
@@ -16,24 +14,25 @@ public class GeneratedAttribute implements IAttribute {
   @Getter
   private final ArrayList<Integer> expTable = new ArrayList<>();
 
-  private final IUpgradable typeExperience;
+  private final CharacterExperience characterExp;
 
-  public GeneratedAttribute(IUpgradable typeExperience, int exp) {
-    this.typeExperience = typeExperience;
+  public TypeExperience(CharacterExperience characterExp, int exp) {
+    this.characterExp = characterExp;
     this.exp = exp;
     this.lvl = 0;
   }
-
-  public GeneratedAttribute(IUpgradable typeExperience) {
-    this.typeExperience = typeExperience;
+  
+  public TypeExperience(CharacterExperience characterExp) {
+    this.characterExp = characterExp;
     this.exp = 0;
     this.lvl = 0;
   }
 
+  // TODO: refactor to upgrade event
   @Override
   public final boolean increaseExp(int exp) {
     this.exp += exp;
-    typeExperience.increaseExp(exp);
+    this.characterExp.increaseExp(exp);
 
     if (upgrade()) {
       return true;
@@ -51,7 +50,5 @@ public class GeneratedAttribute implements IAttribute {
     }
     return false;
   }
-
-  // TODO: parameterize expTable to double exp per level
 
 }

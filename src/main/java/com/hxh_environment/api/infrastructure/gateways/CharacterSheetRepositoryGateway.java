@@ -1,7 +1,7 @@
 package com.hxh_environment.api.infrastructure.gateways;
 
 import com.hxh_environment.api.application.gateways.CharacterSheetGateway;
-import com.hxh_environment.api.domain.sheet.CharacterSheet;
+import com.hxh_environment.api.domain.sheets.CharacterSheet;
 import com.hxh_environment.api.infrastructure.persistence.CharacterSheetModel;
 import com.hxh_environment.api.infrastructure.persistence.CharacterSheetRepository;
 

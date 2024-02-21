@@ -1,12 +1,12 @@
-package com.hxh_environment.api.domain.sheet;
+package com.hxh_environment.api.domain.sheets;
 
-import com.hxh_environment.api.domain.attributes.MentalAttributes;
-import com.hxh_environment.api.domain.attributes.PhysicalAttributes;
-import com.hxh_environment.api.domain.attributes.SpiritualAttributes;
 import com.hxh_environment.api.domain.classes.CharacterClass;
-import com.hxh_environment.api.domain.entity.Experience;
 import com.hxh_environment.api.domain.entity.Profile;
-import com.hxh_environment.api.domain.enums.AttributeName;
+import com.hxh_environment.api.domain.experience.CharacterExperience;
+import com.hxh_environment.api.domain.mentals.MentalAttributes;
+import com.hxh_environment.api.domain.physicals.PhysicalAttributes;
+import com.hxh_environment.api.domain.skills.CharacterSkills;
+import com.hxh_environment.api.domain.spirituals.SpiritualAttributes;
 
 import lombok.AllArgsConstructor;
 import lombok.AccessLevel;
@@ -20,7 +20,8 @@ public class CharacterSheet {
   private String description;
   private CharacterClass characterClass;
   private Profile profile;
-  private Experience exp;
+  private CharacterExperience exp;
+  private CharacterSkills skills;
 
   @Getter(AccessLevel.NONE)
   @Setter(AccessLevel.NONE)
@@ -34,15 +35,7 @@ public class CharacterSheet {
   @Setter(AccessLevel.NONE)
   private MentalAttributes mentalAttributes;
 
-  public int spiritualTest(AttributeName name) {
-    return spiritAttributes.test(name);
-  }
-
-  public int physicalTest(AttributeName name) {
-    return physAttributes.test(name);
-  }
-
-  public int mentalTest(AttributeName name) {
-    return mentalAttributes.test(name);
-  }
+  // public int spiritualTest(AttributeName name) {
+  // return spiritAttributes.test(name);
+  // }
 }
