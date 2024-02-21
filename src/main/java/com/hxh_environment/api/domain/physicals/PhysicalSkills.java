@@ -1,43 +1,58 @@
 package com.hxh_environment.api.domain.physicals;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.hxh_environment.api.domain.attributes.PrimaryAttribute;
 import com.hxh_environment.api.domain.enums.AttributeName;
 import com.hxh_environment.api.domain.enums.SkillName;
-import com.hxh_environment.api.domain.experience.IUpgradable;
 import com.hxh_environment.api.domain.skills.PrimarySkill;
+import com.hxh_environment.api.domain.skills.SkillExperience;
+import com.hxh_environment.api.domain.skills.TypeSkill;
 
 import lombok.Getter;
 
-public class PhysicalSkills implements IUpgradable {
+public class PhysicalSkills extends TypeSkill {
+
   @Getter
-  private final int exp;
+  private int exp;
+
+  @Getter
+  private final ArrayList<Integer> expTable = new ArrayList<>();
 
   private final Map<SkillName, PrimarySkill> skills = new HashMap<>();
 
-  public PhysicalSkills(PhysicalAttributes attr) {
+  private final SkillExperience skillExp;
+
+  public PhysicalSkills(PhysicalAttributes attr, SkillExperience skillExp) {
 
     this.exp = 0;
 
-    skills.put(SkillName.CLIMB, new PrimarySkill(SkillName.CLIMB, attr.get(AttributeName.STR)));
-    skills.put(SkillName.PUSH, new PrimarySkill(SkillName.PUSH, attr.get(AttributeName.STR)));
-    skills.put(SkillName.PULL, new PrimarySkill(SkillName.PULL, attr.get(AttributeName.STR)));
-    skills.put(SkillName.GRAB, new PrimarySkill(SkillName.GRAB, attr.get(AttributeName.STR)));
+    this.skillExp = skillExp;
 
-    skills.put(SkillName.BREATH, new PrimarySkill(SkillName.BREATH, attr.get(AttributeName.CON)));
-    skills.put(SkillName.RESISTANCE, new PrimarySkill(SkillName.RESISTANCE, attr.get(AttributeName.CON)));
+    PrimaryAttribute str = attr.get(AttributeName.STR);
+    skills.put(SkillName.CLIMB, new PrimarySkill(SkillName.CLIMB, str, this));
+    skills.put(SkillName.PUSH, new PrimarySkill(SkillName.PUSH, str, this));
+    skills.put(SkillName.PULL, new PrimarySkill(SkillName.PULL, str, this));
+    skills.put(SkillName.GRAB, new PrimarySkill(SkillName.GRAB, str, this));
 
-    skills.put(SkillName.JUMP, new PrimarySkill(SkillName.JUMP, attr.get(AttributeName.VEL)));
-    skills.put(SkillName.SWIM, new PrimarySkill(SkillName.SWIM, attr.get(AttributeName.VEL)));
+    PrimaryAttribute con = attr.get(AttributeName.CON);
+    skills.put(SkillName.BREATH, new PrimarySkill(SkillName.BREATH, con, this));
+    skills.put(SkillName.RESISTANCE, new PrimarySkill(SkillName.RESISTANCE, con, this));
 
-    skills.put(SkillName.STEALTH, new PrimarySkill(SkillName.STEALTH, attr.get(AttributeName.DEX)));
-    skills.put(SkillName.SNEAK, new PrimarySkill(SkillName.SNEAK, attr.get(AttributeName.DEX)));
-    skills.put(SkillName.REFLEX, new PrimarySkill(SkillName.REFLEX, attr.get(AttributeName.DEX)));
-    skills.put(SkillName.ACCURACY, new PrimarySkill(SkillName.ACCURACY, attr.get(AttributeName.DEX)));
-    skills.put(SkillName.SLEIGHT_OF_HAND, new PrimarySkill(SkillName.SLEIGHT_OF_HAND, attr.get(AttributeName.DEX)));
+    PrimaryAttribute vel = attr.get(AttributeName.VEL);
+    skills.put(SkillName.JUMP, new PrimarySkill(SkillName.JUMP, vel, this));
+    skills.put(SkillName.SWIM, new PrimarySkill(SkillName.SWIM, vel, this));
 
-    skills.put(SkillName.ACROBATICS, new PrimarySkill(SkillName.ACROBATICS, null));
+    PrimaryAttribute dex = attr.get(AttributeName.DEX);
+    skills.put(SkillName.STEALTH, new PrimarySkill(SkillName.STEALTH, dex, this));
+    skills.put(SkillName.SNEAK, new PrimarySkill(SkillName.SNEAK, dex, this));
+    skills.put(SkillName.REFLEX, new PrimarySkill(SkillName.REFLEX, dex, this));
+    skills.put(SkillName.ACCURACY, new PrimarySkill(SkillName.ACCURACY, dex, this));
+    skills.put(SkillName.SLEIGHT_OF_HAND, new PrimarySkill(SkillName.SLEIGHT_OF_HAND, dex, this));
+
+    skills.put(SkillName.ACROBATICS, new PrimarySkill(SkillName.ACROBATICS, null, this));
 
   }
 
@@ -45,34 +60,16 @@ public class PhysicalSkills implements IUpgradable {
     return skills.get(name);
   }
 
+  // TODO: refactor to upgrade event
   @Override
-  public int getLvl() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getLvl'");
-  }
+  public final boolean increaseExp(int exp) {
+    this.exp += exp;
+    this.skillExp.increaseExp(exp);
 
-  @Override
-  public int getCurrentExp() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getCurrentExp'");
-  }
-
-  @Override
-  public int getExpToEvolve() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getExpToEvolve'");
-  }
-
-  @Override
-  public int increaseExp(int exp) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'increasePoints'");
-  }
-
-  @Override
-  public void upgrade() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'upgreade'");
+    if (upgrade()) {
+      return true;
+    }
+    return false;
   }
 
 }

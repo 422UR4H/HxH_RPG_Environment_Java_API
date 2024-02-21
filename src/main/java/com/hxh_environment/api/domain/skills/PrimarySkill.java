@@ -1,85 +1,56 @@
 package com.hxh_environment.api.domain.skills;
 
-import java.util.ArrayList;
-
 import com.hxh_environment.api.domain.attributes.PrimaryAttribute;
-import com.hxh_environment.api.domain.entity.Dice;
 import com.hxh_environment.api.domain.enums.SkillName;
-import com.hxh_environment.api.domain.pubsub.IObserver;
-import com.hxh_environment.api.domain.pubsub.ISubject;
+import com.hxh_environment.api.domain.experience.IUpgradable;
 
-public class PrimarySkill extends Skill implements ISubject {
+import lombok.Getter;
+
+public class PrimarySkill extends Skill {
+
+  @Getter
+  private int exp;
+
+  @Getter
+  private int lvl;
 
   private final PrimaryAttribute attribute;
-  private final ArrayList<IObserver> observers = new ArrayList<>();
 
-  public PrimarySkill(SkillName name, PrimaryAttribute attribute, int exp) {
-    super(exp, name);
-    this.attribute = attribute;
-  }
+  private final IUpgradable typeSkills;
 
-  public PrimarySkill(SkillName name, PrimaryAttribute attribute) {
+  public PrimarySkill(SkillName name, PrimaryAttribute attribute, IUpgradable typeSkills) {
     super(name);
+    this.exp = 0;
     this.attribute = attribute;
+    this.typeSkills = typeSkills;
   }
 
-  public int test(int lvl) {
-    return Dice.attributeTest() + attribute.getLvl() + (int) Math.floor(lvl / 2);
+  // TODO: refactor to upgrade event
+  @Override
+  public final boolean increaseExp(int exp) {
+    this.exp += exp;
+    this.attribute.increaseExp(exp);
+    this.typeSkills.increaseExp(exp);
+
+    if (upgrade()) {
+      return true;
+    }
+    return false;
   }
 
   @Override
-  public void subscribe(IObserver observer) {
-    observers.add(observer);
+  public final boolean upgrade() {
+    int newLvl = calculateLvl();
+
+    if (this.lvl != newLvl) {
+      this.lvl = newLvl;
+      return true;
+    }
+    return false;
   }
 
-  @Override
-  public void unsubscribe(IObserver observer) {
-    observers.remove(observer);
-  }
-
-  @Override
-  public void unsubscribeAll() {
-    observers.clear();
-  }
-
-  @Override
-  public void notify(IObserver observer) {
-    observer.update();
-  }
-
-  @Override
-  public void notifyAllObservers() {
-    observers.forEach(o -> o.update());
-  }
-
-  @Override
-  public int getLvl() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getLvl'");
-  }
-
-  @Override
-  public int getCurrentExp() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getCurrentExp'");
-  }
-
-  @Override
-  public int getExpToEvolve() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getExpToEvolve'");
-  }
-
-  @Override
-  public int increaseExp(int exp) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'increasePoints'");
-  }
-
-  @Override
-  public void upgrade() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'upgreade'");
-  }
+  // public int test(int lvl) {
+  // return Dice.attributeTest() + attribute.getLvl() + (int) Math.floor(lvl / 2);
+  // }
 
 }

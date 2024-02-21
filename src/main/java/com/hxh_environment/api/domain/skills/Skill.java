@@ -1,19 +1,20 @@
 package com.hxh_environment.api.domain.skills;
 
+import java.util.ArrayList;
+
 import com.hxh_environment.api.domain.enums.SkillName;
 import com.hxh_environment.api.domain.experience.IUpgradable;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 
-@Data
-@AllArgsConstructor
 public abstract class Skill implements IUpgradable {
-  private final int exp;
+  @Getter
   private final SkillName name;
 
+  @Getter
+  private final ArrayList<Integer> expTable = new ArrayList<>();
+
   public Skill(SkillName name) {
-    this.exp = 0;
     this.name = name;
   }
 }

@@ -5,6 +5,7 @@ import com.hxh_environment.api.domain.entity.Profile;
 import com.hxh_environment.api.domain.experience.CharacterExperience;
 import com.hxh_environment.api.domain.mentals.MentalAttributes;
 import com.hxh_environment.api.domain.physicals.PhysicalAttributes;
+import com.hxh_environment.api.domain.skills.CharacterSkills;
 import com.hxh_environment.api.domain.spirituals.SpiritualAttributes;
 
 import lombok.AllArgsConstructor;
@@ -20,6 +21,7 @@ public class CharacterSheet {
   private CharacterClass characterClass;
   private Profile profile;
   private CharacterExperience exp;
+  private CharacterSkills skills;
 
   @Getter(AccessLevel.NONE)
   @Setter(AccessLevel.NONE)
