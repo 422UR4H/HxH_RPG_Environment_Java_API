@@ -4,7 +4,7 @@ import com.hxh_environment.api.domain.experience.IUpgradable;
 
 import lombok.Getter;
 
-public abstract class TypeSkill implements IUpgradable {
+public abstract class TypeSkills implements IUpgradable {
 
   @Getter
   private int lvl;

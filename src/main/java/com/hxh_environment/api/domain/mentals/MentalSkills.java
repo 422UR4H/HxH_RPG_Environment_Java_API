@@ -9,11 +9,11 @@ import com.hxh_environment.api.domain.enums.AttributeName;
 import com.hxh_environment.api.domain.enums.SkillName;
 import com.hxh_environment.api.domain.skills.PrimarySkill;
 import com.hxh_environment.api.domain.skills.SkillExperience;
-import com.hxh_environment.api.domain.skills.TypeSkill;
+import com.hxh_environment.api.domain.skills.TypeSkills;
 
 import lombok.Getter;
 
-public class MentalSkills extends TypeSkill {
+public class MentalSkills extends TypeSkills {
 
   @Getter
   private int exp;
