@@ -54,6 +54,10 @@ public class PhysicalSkills extends TypeSkill {
 
     skills.put(SkillName.ACROBATICS, new PrimarySkill(SkillName.ACROBATICS, null, this));
 
+    for (SkillName name : skills.keySet()) {
+      skills.get(name).init(0);
+    }
+    
   }
 
   public final PrimarySkill get(SkillName name) {

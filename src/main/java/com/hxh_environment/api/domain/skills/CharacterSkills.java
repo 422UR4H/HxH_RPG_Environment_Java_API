@@ -18,6 +18,9 @@ public class CharacterSkills {
   public CharacterSkills(PhysicalAttributes physAttr, MentalAttributes mentalAttr, SkillExperience skillExp) {
     this.physicalSkills = new PhysicalSkills(physAttr, skillExp);
     this.mentalSkills = new MentalSkills(mentalAttr, skillExp);
+
+    physicalSkills.init(0);
+    mentalSkills.init(0);
   }
 
   public final PrimarySkill get(SkillName name) {

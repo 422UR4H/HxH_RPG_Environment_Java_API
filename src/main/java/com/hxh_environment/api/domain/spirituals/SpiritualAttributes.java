@@ -14,12 +14,12 @@ public class SpiritualAttributes {
     attributes.put(AttributeName.SPR, new PrimaryAttribute(spiritualExp));
 
     attributes.put(AttributeName.COA, new PrimaryAttribute(spiritualExp));
-
     attributes.put(AttributeName.TEN, new PrimaryAttribute(spiritualExp));
     attributes.put(AttributeName.ZTS, new PrimaryAttribute(spiritualExp));
     attributes.put(AttributeName.REN, new PrimaryAttribute(spiritualExp));
     attributes.put(AttributeName.GYO, new PrimaryAttribute(spiritualExp));
-    attributes.put(AttributeName.HTS, new PrimaryAttribute(spiritualExp));
+
+    attributes.put(AttributeName.HTS, new Hatsu(spiritualExp));
 
     attributes.put(AttributeName.RYU, new PrimaryAttribute(spiritualExp));
     attributes.put(AttributeName.KOU, new PrimaryAttribute(spiritualExp));
@@ -27,10 +27,14 @@ public class SpiritualAttributes {
     attributes.put(AttributeName.MOP, new PrimaryAttribute(spiritualExp));
     attributes.put(AttributeName.EN, new PrimaryAttribute(spiritualExp));
     attributes.put(AttributeName.IN, new PrimaryAttribute(spiritualExp));
+
+    for (AttributeName name : attributes.keySet()) {
+      attributes.get(name).init(0);
+    }
   }
 
   // public final int test(AttributeName name) {
-  //   return attributes.get(name).test(getLvl());
+  // return attributes.get(name).test(getLvl());
   // }
 
   public final PrimaryAttribute get(AttributeName name) {
