@@ -1,13 +1,12 @@
 package com.hxh_environment.api.domain.attributes;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import com.hxh_environment.api.domain.experience.IUpgradable;
 
 import lombok.Getter;
 
-public class PrimaryAttribute implements IAttribute {
+public class MixedAttribute implements IAttribute {
   @Getter
   private int exp;
 
@@ -19,18 +18,13 @@ public class PrimaryAttribute implements IAttribute {
 
   private final ArrayList<IUpgradable> upgradables;
 
-  public PrimaryAttribute(ArrayList<IUpgradable> upgradables, int exp) {
+  public MixedAttribute(ArrayList<IUpgradable> upgradables, int exp) {
     this.upgradables = upgradables;
     this.exp = exp;
   }
 
-  public PrimaryAttribute(ArrayList<IUpgradable> upgradables) {
+  public MixedAttribute(ArrayList<IUpgradable> upgradables) {
     this.upgradables = upgradables;
-    this.exp = 0;
-  }
-
-  public PrimaryAttribute(IUpgradable upgradable) {
-    this.upgradables = new ArrayList<>(List.of(upgradable));
     this.exp = 0;
   }
 
@@ -55,5 +49,7 @@ public class PrimaryAttribute implements IAttribute {
     }
     return false;
   }
+
+  // TODO: parameterize expTable to double exp per level
 
 }

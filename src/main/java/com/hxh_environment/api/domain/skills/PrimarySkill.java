@@ -71,13 +71,13 @@ public class PrimarySkill extends Skill implements ISubject {
   }
 
   @Override
-  public int increasePoints(int exp) {
+  public int increaseExp(int exp) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'increasePoints'");
   }
 
   @Override
-  public void upgreade() {
+  public void upgrade() {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'upgreade'");
   }

@@ -28,22 +28,13 @@ public final class CharacterExperience implements IUpgradable {
   @Getter
   private final SkillExperience skillExperience;
 
-  public CharacterExperience() {
-    this.exp = 0;
-
-    this.spiritualExperience = new SpiritualExperience(this);
-    this.physicalExperience = new PhysicalExperience(this);
-    this.mentalExperience = new MentalExperience(this);
-    this.skillExperience = new SkillExperience(this);
-  }
-
   public CharacterExperience(
       SpiritualExperience spiritual,
       PhysicalExperience physical,
       MentalExperience mental,
       SkillExperience skill) {
 
-    this.exp = spiritual.getExp() + physical.getExp() + mental.getExp() + skill.getExp();
+    // this.exp = spiritual.getExp() + physical.getExp() + mental.getExp() + skill.getExp();
 
     this.spiritualExperience = spiritual;
     this.physicalExperience = physical;

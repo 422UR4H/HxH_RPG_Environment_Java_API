@@ -2,69 +2,54 @@ package com.hxh_environment.api.domain.attributes;
 
 import java.util.ArrayList;
 
-import com.hxh_environment.api.domain.pubsub.IObserver;
+import com.hxh_environment.api.domain.experience.IUpgradable;
 
 import lombok.Getter;
-import lombok.NonNull;
 
-public class GeneratedAttribute implements IAttribute, IObserver {
-
-  private ArrayList<PrimaryAttribute> primaryAttributes = new ArrayList<>();
-
+public class GeneratedAttribute implements IAttribute {
   @Getter
   private int exp;
 
-  private final int getPrimaryAttrAvg() {
-    int avg = 0;
-    for (PrimaryAttribute attr : this.primaryAttributes) {
-      avg += attr.getExp();
-    }
-    return (int) Math.floor(avg / this.primaryAttributes.size());
+  @Getter
+  private int lvl;
+
+  @Getter
+  private final ArrayList<Integer> expTable = new ArrayList<>();
+
+  private final IUpgradable typeExperience;
+
+  public GeneratedAttribute(IUpgradable typeExperience, int exp) {
+    this.typeExperience = typeExperience;
+    this.exp = exp;
   }
 
-  public GeneratedAttribute(@NonNull ArrayList<PrimaryAttribute> primaryAttributes) {
-    this.primaryAttributes = primaryAttributes;
+  public GeneratedAttribute(IUpgradable typeExperience) {
+    this.typeExperience = typeExperience;
     this.exp = 0;
-
-    this.primaryAttributes.forEach((attr) -> {
-      attr.subscribe(this);
-    });
-    this.update();
   }
 
   @Override
-  public void update() {
-    this.exp = getPrimaryAttrAvg();
+  public final boolean increaseExp(int exp) {
+    this.exp += exp;
+    typeExperience.increaseExp(exp);
+
+    if (upgrade()) {
+      return true;
+    }
+    return false;
   }
 
   @Override
-  public int getLvl() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getLvl'");
+  public final boolean upgrade() {
+    int newLvl = calculateLvl();
+
+    if (this.lvl != newLvl) {
+      this.lvl = newLvl;
+      return true;
+    }
+    return false;
   }
 
-  @Override
-  public int getCurrentExp() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getCurrentExp'");
-  }
-
-  @Override
-  public int getExpToEvolve() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getExpToEvolve'");
-  }
-
-  @Override
-  public int increasePoints(int exp) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'increasePoints'");
-  }
-
-  @Override
-  public void upgreade() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'upgreade'");
-  }
+  // TODO: parameterize expTable to double exp per level
 
 }

@@ -9,38 +9,38 @@ import com.hxh_environment.api.domain.attributes.PrimaryAttribute;
 import com.hxh_environment.api.domain.enums.AttributeName;
 import com.hxh_environment.api.domain.experience.IUpgradable;
 
-import lombok.Getter;
-
-public class PhysicalAttributes implements IUpgradable {
-  @Getter
-  private final int exp;
+public class PhysicalAttributes {
 
   private final Map<AttributeName, PrimaryAttribute> attributes = new HashMap<>();
   private final Map<AttributeName, GeneratedAttribute> genAttributes = new HashMap<>();
 
-  public PhysicalAttributes(int exp) {
+  public PhysicalAttributes(PhysicalExperience physicalExp) {
 
-    this.exp = exp;
+    genAttributes.put(AttributeName.DEF, new GeneratedAttribute(physicalExp));
+    genAttributes.put(AttributeName.AGI, new GeneratedAttribute(physicalExp));
+    genAttributes.put(AttributeName.ATS, new GeneratedAttribute(physicalExp));
 
-    attributes.put(AttributeName.STR, new PrimaryAttribute());
-    attributes.put(AttributeName.DEX, new PrimaryAttribute());
-    attributes.put(AttributeName.CON, new PrimaryAttribute());
-    attributes.put(AttributeName.VEL, new PrimaryAttribute());
+    ArrayList<IUpgradable> dependencyListStr = new ArrayList<>();
+    dependencyListStr.add(physicalExp);
+    dependencyListStr.add(genAttributes.get(AttributeName.DEF));
+    dependencyListStr.add(genAttributes.get(AttributeName.AGI));
+    dependencyListStr.add(genAttributes.get(AttributeName.ATS));
+    attributes.put(AttributeName.STR, new PrimaryAttribute(dependencyListStr));
 
-    ArrayList<PrimaryAttribute> dependencyListDef = new ArrayList<>();
-    dependencyListDef.add(attributes.get(AttributeName.STR));
-    dependencyListDef.add(attributes.get(AttributeName.CON));
-    genAttributes.put(AttributeName.DEF, new GeneratedAttribute(dependencyListDef));
+    ArrayList<IUpgradable> dependencyListDex = new ArrayList<>();
+    dependencyListDex.add(physicalExp);
+    dependencyListDex.add(genAttributes.get(AttributeName.ATS));
+    attributes.put(AttributeName.DEX, new PrimaryAttribute(dependencyListDex));
 
-    ArrayList<PrimaryAttribute> dependencyListAgi = new ArrayList<>();
-    dependencyListAgi.add(attributes.get(AttributeName.STR));
-    dependencyListAgi.add(attributes.get(AttributeName.VEL));
-    genAttributes.put(AttributeName.AGI, new GeneratedAttribute(dependencyListAgi));
+    ArrayList<IUpgradable> dependencyListCon = new ArrayList<>();
+    dependencyListCon.add(physicalExp);
+    dependencyListCon.add(genAttributes.get(AttributeName.DEF));
+    attributes.put(AttributeName.CON, new PrimaryAttribute(dependencyListCon));
 
-    ArrayList<PrimaryAttribute> dependencyListAts = new ArrayList<>();
-    dependencyListAts.add(attributes.get(AttributeName.STR));
-    dependencyListAts.add(attributes.get(AttributeName.DEX));
-    genAttributes.put(AttributeName.ATS, new GeneratedAttribute(dependencyListAts));
+    ArrayList<IUpgradable> dependencyListVel = new ArrayList<>();
+    dependencyListVel.add(physicalExp);
+    dependencyListVel.add(genAttributes.get(AttributeName.AGI));
+    attributes.put(AttributeName.VEL, new PrimaryAttribute(dependencyListVel));
 
   }
 
@@ -48,33 +48,7 @@ public class PhysicalAttributes implements IUpgradable {
     return attributes.get(name);
   }
 
-  @Override
-  public int getLvl() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getLvl'");
-  }
-
-  @Override
-  public int getCurrentExp() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getCurrentExp'");
-  }
-
-  @Override
-  public int getExpToEvolve() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getExpToEvolve'");
-  }
-
-  @Override
-  public int increasePoints(int exp) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'increasePoints'");
-  }
-
-  @Override
-  public void upgreade() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'upgreade'");
+  public final GeneratedAttribute getGen(AttributeName name) {
+    return genAttributes.get(name);
   }
 }
