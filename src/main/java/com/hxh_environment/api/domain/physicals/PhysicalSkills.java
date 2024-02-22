@@ -21,9 +21,9 @@ public class PhysicalSkills extends TypeSkills {
 
   private final static double COEFFICIENT = 1.0;
 
-  public PhysicalSkills(PhysicalAttributes attr, SkillExperience skillExp) {
+  public PhysicalSkills(PhysicalAttributes attr, SkillExperience skillExp, PhysicalExperience physExp) {
 
-    super(COEFFICIENT, skillExp);
+    super(COEFFICIENT, skillExp, physExp);
 
     PhysicalAttribute str = attr.get(AttributeName.STR);
     skills.put(SkillName.CLIMB, new PrimarySkill(SkillName.CLIMB, str, this));

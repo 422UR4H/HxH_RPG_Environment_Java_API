@@ -1,6 +1,7 @@
 package com.hxh_environment.api.domain.skills;
 
 import com.hxh_environment.api.domain.enums.SkillName;
+import com.hxh_environment.api.domain.experience.CharacterExperience;
 import com.hxh_environment.api.domain.mentals.MentalAttributes;
 import com.hxh_environment.api.domain.mentals.MentalSkills;
 import com.hxh_environment.api.domain.physicals.PhysicalAttributes;
@@ -15,9 +16,14 @@ public class CharacterSkills {
   @Getter
   private final MentalSkills mentalSkills;
 
-  public CharacterSkills(PhysicalAttributes physAttr, MentalAttributes mentalAttr, SkillExperience skillExp) {
-    this.physicalSkills = new PhysicalSkills(physAttr, skillExp);
-    this.mentalSkills = new MentalSkills(mentalAttr, skillExp);
+  public CharacterSkills(
+      PhysicalAttributes physAttr,
+      MentalAttributes mentalAttr,
+      SkillExperience skillExp,
+      CharacterExperience charExp) {
+
+    this.physicalSkills = new PhysicalSkills(physAttr, skillExp, charExp.getPhysicalExperience());
+    this.mentalSkills = new MentalSkills(mentalAttr, skillExp, charExp.getMentalExperience());
 
     physicalSkills.init(0);
     mentalSkills.init(0);
