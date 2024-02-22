@@ -1,6 +1,6 @@
 package com.hxh_environment.api.domain.skills;
 
-import com.hxh_environment.api.domain.attributes.PrimaryAttribute;
+import com.hxh_environment.api.domain.attributes.Attribute;
 import com.hxh_environment.api.domain.enums.SkillName;
 import com.hxh_environment.api.domain.experience.IUpgradable;
 
@@ -11,11 +11,11 @@ public class PrimarySkill extends Skill {
   @Getter
   private int exp;
 
-  private final PrimaryAttribute attribute;
+  private final Attribute attribute;
 
   private final IUpgradable typeSkills;
 
-  public PrimarySkill(SkillName name, PrimaryAttribute attribute, IUpgradable typeSkills) {
+  public PrimarySkill(SkillName name, Attribute attribute, IUpgradable typeSkills) {
     super(name);
     this.exp = 0;
     this.attribute = attribute;

@@ -34,6 +34,9 @@ public enum SkillName {
   PERFORMANCE("Performance", AttributeName.CHA),
   PERSUASION("Persuasion", AttributeName.CHA),
 
+  FOCUS("Focus", AttributeName.SPR),
+  CONSCIENCE("Conscience", AttributeName.SPR),
+
   MEDICINE("Medicine", null),
   SURVIVAL("Survival", null),
   ACROBATICS("Acrobatics", null),

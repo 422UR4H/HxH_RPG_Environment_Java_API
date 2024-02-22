@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.hxh_environment.api.domain.attributes.PrimaryAttribute;
 import com.hxh_environment.api.domain.enums.AttributeName;
 import com.hxh_environment.api.domain.enums.SkillName;
 import com.hxh_environment.api.domain.skills.PrimarySkill;
@@ -16,35 +15,30 @@ import lombok.Getter;
 public class MentalSkills extends TypeSkills {
 
   @Getter
-  private int exp;
-
-  @Getter
   private final ArrayList<Integer> expTable = new ArrayList<>();
 
   private final Map<SkillName, PrimarySkill> skills = new HashMap<>();
 
-  private final SkillExperience skillExp;
+  private final static double COEFFICIENT = 3.0;
 
   public MentalSkills(MentalAttributes attr, SkillExperience skillExp) {
 
-    this.exp = 0;
+    super(COEFFICIENT, skillExp);
 
-    this.skillExp = skillExp;
-
-    PrimaryAttribute wis = attr.get(AttributeName.WIS);
+    MentalAttribute wis = attr.get(AttributeName.WIS);
     skills.put(SkillName.HISTORY, new PrimarySkill(SkillName.HISTORY, wis, this));
     skills.put(SkillName.NATURE, new PrimarySkill(SkillName.NATURE, wis, this));
     skills.put(SkillName.MEMORY, new PrimarySkill(SkillName.MEMORY, wis, this));
 
-    PrimaryAttribute _int = attr.get(AttributeName.INT);
+    MentalAttribute _int = attr.get(AttributeName.INT);
     skills.put(SkillName.REASONING, new PrimarySkill(SkillName.REASONING, _int, this));
     skills.put(SkillName.INVESTIGATION, new PrimarySkill(SkillName.INVESTIGATION, _int, this));
 
-    PrimaryAttribute sen = attr.get(AttributeName.SEN);
+    MentalAttribute sen = attr.get(AttributeName.SEN);
     skills.put(SkillName.INSIGHT, new PrimarySkill(SkillName.INSIGHT, sen, this));
     skills.put(SkillName.PERCEPTION, new PrimarySkill(SkillName.PERCEPTION, sen, this));
 
-    PrimaryAttribute cha = attr.get(AttributeName.CHA);
+    MentalAttribute cha = attr.get(AttributeName.CHA);
     skills.put(SkillName.DECEPTION, new PrimarySkill(SkillName.DECEPTION, cha, this));
     skills.put(SkillName.INTIMIDATION, new PrimarySkill(SkillName.INTIMIDATION, cha, this));
     skills.put(SkillName.PERFORMANCE, new PrimarySkill(SkillName.PERFORMANCE, cha, this));
@@ -62,17 +56,6 @@ public class MentalSkills extends TypeSkills {
 
   public final PrimarySkill get(SkillName name) {
     return skills.get(name);
-  }
-
-  @Override
-  public boolean increaseExp(int exp) {
-    this.exp += exp;
-    this.skillExp.increaseExp(exp);
-
-    if (upgrade()) {
-      return true;
-    }
-    return false;
   }
 
 }

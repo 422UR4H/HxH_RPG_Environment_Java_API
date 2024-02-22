@@ -15,6 +15,8 @@ public interface IUpgradable {
 
   public static double B_PARAM = 2.8;
 
+  public double getCoefficient();
+
   public default boolean initExpTable() {
     ArrayList<Integer> expTable = getExpTable();
 
@@ -26,9 +28,10 @@ public interface IUpgradable {
 
     for (int i = 1; i < MAX_LVL; i++) {
 
-      expTable.add((int) ((1700.0 / (1.0 + Math.pow(Math.E, (A_PARAM / 10.0) * (12.0 - i)))) +
+      expTable.add((int) (getCoefficient() * (
+          (1700.0 / (1.0 + Math.pow(Math.E, (A_PARAM / 10.0) * (12.0 - i)))) +
           (1800.0 / (1.0 + Math.pow(Math.E, (A_PARAM / 10.0) * (38.0 - i)))) +
-          (2000.0 / (1.0 + Math.pow(Math.E, (B_PARAM / 10.0) * (74.0 - i))))));
+          (2000.0 / (1.0 + Math.pow(Math.E, (B_PARAM / 10.0) * (74.0 - i)))))));
 
     }
     return true;
