@@ -19,9 +19,9 @@ public class CharacterSkills {
   public CharacterSkills(
       PhysicalAttributes physAttr,
       MentalAttributes mentalAttr,
-      SkillExperience skillExp,
       CharacterExperience charExp) {
 
+    SkillExperience skillExp = charExp.getSkillExperience();
     this.physicalSkills = new PhysicalSkills(physAttr, skillExp, charExp.getPhysicalExperience());
     this.mentalSkills = new MentalSkills(mentalAttr, skillExp, charExp.getMentalExperience());
 

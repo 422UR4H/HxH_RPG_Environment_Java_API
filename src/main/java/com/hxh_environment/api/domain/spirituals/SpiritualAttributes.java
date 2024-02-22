@@ -9,7 +9,7 @@ public class SpiritualAttributes {
 
   private final Map<AttributeName, SpiritualAttribute> attributes = new HashMap<>();
 
-  private SpiritualAttributes(SpiritualExperience spiritualExp) {
+  public SpiritualAttributes(SpiritualExperience spiritualExp) {
     attributes.put(AttributeName.SPR, new SpiritualAttribute(spiritualExp));
 
     attributes.put(AttributeName.COA, new SpiritualAttribute(spiritualExp));

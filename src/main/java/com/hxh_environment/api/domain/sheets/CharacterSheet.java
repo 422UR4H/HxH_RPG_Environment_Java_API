@@ -1,6 +1,5 @@
 package com.hxh_environment.api.domain.sheets;
 
-import com.hxh_environment.api.domain.classes.CharacterClass;
 import com.hxh_environment.api.domain.entity.Profile;
 import com.hxh_environment.api.domain.experience.CharacterExperience;
 import com.hxh_environment.api.domain.mentals.MentalAttributes;
@@ -8,32 +7,44 @@ import com.hxh_environment.api.domain.physicals.PhysicalAttributes;
 import com.hxh_environment.api.domain.skills.CharacterSkills;
 import com.hxh_environment.api.domain.spirituals.SpiritualAttributes;
 
-import lombok.AllArgsConstructor;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Data
-@AllArgsConstructor
 public class CharacterSheet {
+
   private String description;
-  private CharacterClass characterClass;
-  private Profile profile;
-  private CharacterExperience exp;
-  private CharacterSkills skills;
+  private final Profile profile;
+  private final CharacterSkills skills;
+  private final CharacterExperience exp;
+  // private final CharacterClass characterClass;
 
   @Getter(AccessLevel.NONE)
   @Setter(AccessLevel.NONE)
-  private SpiritualAttributes spiritAttributes;
+  private final SpiritualAttributes spiritAttributes;
 
   @Getter(AccessLevel.NONE)
   @Setter(AccessLevel.NONE)
-  private PhysicalAttributes physAttributes;
+  private final PhysicalAttributes physAttributes;
 
   @Getter(AccessLevel.NONE)
   @Setter(AccessLevel.NONE)
-  private MentalAttributes mentalAttributes;
+  private final MentalAttributes mentalAttributes;
+
+  public CharacterSheet(Profile profile) {
+    this.profile = profile;
+
+    this.exp = new CharacterExperience();
+    this.exp.init(0);
+
+    this.physAttributes = new PhysicalAttributes(exp.getPhysicalExperience());
+    this.mentalAttributes = new MentalAttributes(exp.getMentalExperience());
+    this.spiritAttributes = new SpiritualAttributes(exp.getSpiritualExperience());
+
+    this.skills = new CharacterSkills(physAttributes, mentalAttributes, exp);
+  }
 
   // public int spiritualTest(AttributeName name) {
   // return spiritAttributes.test(name);

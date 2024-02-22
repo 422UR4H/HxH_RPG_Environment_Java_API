@@ -1,6 +1,5 @@
 package com.hxh_environment.api.domain.mentals;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,15 +9,9 @@ import com.hxh_environment.api.domain.skills.PrimarySkill;
 import com.hxh_environment.api.domain.skills.SkillExperience;
 import com.hxh_environment.api.domain.skills.TypeSkills;
 
-import lombok.Getter;
-
 public class MentalSkills extends TypeSkills {
 
-  @Getter
-  private final ArrayList<Integer> expTable = new ArrayList<>();
-
   private final Map<SkillName, PrimarySkill> skills = new HashMap<>();
-
   private final static double COEFFICIENT = 2.0;
 
   public MentalSkills(MentalAttributes attr, SkillExperience skillExp, MentalExperience mentalExp) {

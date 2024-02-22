@@ -26,22 +26,23 @@ public final class CharacterExperience extends Level {
   @Getter
   private final SkillExperience skillExperience;
 
-  public CharacterExperience(
-      SpiritualExperience spiritual,
-      PhysicalExperience physical,
-      MentalExperience mental,
-      SkillExperience skill) {
-
+  public CharacterExperience() {
     super(1);
 
     // this.exp = spiritual.getExp() + physical.getExp() + mental.getExp() + skill.getExp();
 
-    this.spiritualExperience = spiritual;
-    this.physicalExperience = physical;
-    this.mentalExperience = mental;
-    this.skillExperience = skill;
     this.talent = 0;
     this.exp = 0;
+
+    this.spiritualExperience = new SpiritualExperience(this);
+    this.physicalExperience = new PhysicalExperience(this);
+    this.mentalExperience = new MentalExperience(this);
+    this.skillExperience = new SkillExperience(this);
+
+    this.spiritualExperience.init(0);
+    this.physicalExperience.init(0);
+    this.mentalExperience.init(0);
+    this.skillExperience.init(0);
   }
 
   // TODO: refactor to upgrade event

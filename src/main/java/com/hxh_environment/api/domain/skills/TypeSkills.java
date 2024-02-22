@@ -1,5 +1,7 @@
 package com.hxh_environment.api.domain.skills;
 
+import java.util.ArrayList;
+
 import com.hxh_environment.api.domain.experience.Level;
 import com.hxh_environment.api.domain.experience.TypeExperience;
 
@@ -9,6 +11,9 @@ public abstract class TypeSkills extends Level {
 
   @Getter
   private int exp;
+
+  @Getter
+  private final ArrayList<Integer> expTable = new ArrayList<>();
 
   private final SkillExperience skillExp;
 
