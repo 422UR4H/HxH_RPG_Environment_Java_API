@@ -19,7 +19,7 @@ public class MentalSkills extends TypeSkills {
 
   private final Map<SkillName, PrimarySkill> skills = new HashMap<>();
 
-  private final static double COEFFICIENT = 3.0;
+  private final static double COEFFICIENT = 2.0;
 
   public MentalSkills(MentalAttributes attr, SkillExperience skillExp) {
 

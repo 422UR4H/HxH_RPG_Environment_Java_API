@@ -19,7 +19,7 @@ public class PhysicalSkills extends TypeSkills {
 
   private final Map<SkillName, PrimarySkill> skills = new HashMap<>();
 
-  private final static double COEFFICIENT = 5.0;
+  private final static double COEFFICIENT = 1.0;
 
   public PhysicalSkills(PhysicalAttributes attr, SkillExperience skillExp) {
 
