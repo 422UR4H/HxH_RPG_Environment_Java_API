@@ -21,9 +21,9 @@ public class MentalSkills extends TypeSkills {
 
   private final static double COEFFICIENT = 2.0;
 
-  public MentalSkills(MentalAttributes attr, SkillExperience skillExp) {
+  public MentalSkills(MentalAttributes attr, SkillExperience skillExp, MentalExperience mentalExp) {
 
-    super(COEFFICIENT, skillExp);
+    super(COEFFICIENT, skillExp, mentalExp);
 
     MentalAttribute wis = attr.get(AttributeName.WIS);
     skills.put(SkillName.HISTORY, new PrimarySkill(SkillName.HISTORY, wis, this));
