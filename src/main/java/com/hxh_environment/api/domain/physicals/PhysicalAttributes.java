@@ -4,59 +4,53 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.hxh_environment.api.domain.attributes.GeneratedAttribute;
-import com.hxh_environment.api.domain.attributes.PrimaryAttribute;
 import com.hxh_environment.api.domain.enums.AttributeName;
 import com.hxh_environment.api.domain.experience.IUpgradable;
 
 public class PhysicalAttributes {
 
-  private final Map<AttributeName, PrimaryAttribute> attributes = new HashMap<>();
-  private final Map<AttributeName, GeneratedAttribute> genAttributes = new HashMap<>();
+  private final Map<AttributeName, PhysicalAttribute> attributes = new HashMap<>();
 
   public PhysicalAttributes(PhysicalExperience physicalExp) {
 
-    genAttributes.put(AttributeName.DEF, new GeneratedAttribute(physicalExp));
-    genAttributes.put(AttributeName.AGI, new GeneratedAttribute(physicalExp));
-    genAttributes.put(AttributeName.ATS, new GeneratedAttribute(physicalExp));
+    attributes.put(AttributeName.DEF, new PhysicalAttribute(physicalExp));
+    attributes.put(AttributeName.AGI, new PhysicalAttribute(physicalExp));
+    attributes.put(AttributeName.ATS, new PhysicalAttribute(physicalExp));
 
     ArrayList<IUpgradable> dependencyListStr = new ArrayList<>();
     dependencyListStr.add(physicalExp);
-    dependencyListStr.add(genAttributes.get(AttributeName.DEF));
-    dependencyListStr.add(genAttributes.get(AttributeName.AGI));
-    dependencyListStr.add(genAttributes.get(AttributeName.ATS));
-    attributes.put(AttributeName.STR, new PrimaryAttribute(dependencyListStr));
+    dependencyListStr.add(attributes.get(AttributeName.DEF));
+    dependencyListStr.add(attributes.get(AttributeName.AGI));
+    dependencyListStr.add(attributes.get(AttributeName.ATS));
+    attributes.put(AttributeName.STR, new PhysicalAttribute(dependencyListStr));
 
     ArrayList<IUpgradable> dependencyListDex = new ArrayList<>();
     dependencyListDex.add(physicalExp);
-    dependencyListDex.add(genAttributes.get(AttributeName.ATS));
-    attributes.put(AttributeName.DEX, new PrimaryAttribute(dependencyListDex));
+    dependencyListDex.add(attributes.get(AttributeName.ATS));
+    attributes.put(AttributeName.DEX, new PhysicalAttribute(dependencyListDex));
 
     ArrayList<IUpgradable> dependencyListCon = new ArrayList<>();
     dependencyListCon.add(physicalExp);
-    dependencyListCon.add(genAttributes.get(AttributeName.DEF));
-    attributes.put(AttributeName.CON, new PrimaryAttribute(dependencyListCon));
+    dependencyListCon.add(attributes.get(AttributeName.DEF));
+    attributes.put(AttributeName.CON, new PhysicalAttribute(dependencyListCon));
 
     ArrayList<IUpgradable> dependencyListVel = new ArrayList<>();
     dependencyListVel.add(physicalExp);
-    dependencyListVel.add(genAttributes.get(AttributeName.AGI));
-    attributes.put(AttributeName.VEL, new PrimaryAttribute(dependencyListVel));
+    dependencyListVel.add(attributes.get(AttributeName.AGI));
+    attributes.put(AttributeName.VEL, new PhysicalAttribute(dependencyListVel));
 
     for (AttributeName name : attributes.keySet()) {
       attributes.get(name).init(0);
     }
 
-    for (AttributeName name : genAttributes.keySet()) {
-      genAttributes.get(name).init(0);
+    for (AttributeName name : attributes.keySet()) {
+      attributes.get(name).init(0);
     }
 
   }
 
-  public final PrimaryAttribute getPrimary(AttributeName name) {
+  public final PhysicalAttribute get(AttributeName name) {
     return attributes.get(name);
   }
 
-  public final GeneratedAttribute getGenerated(AttributeName name) {
-    return genAttributes.get(name);
-  }
 }

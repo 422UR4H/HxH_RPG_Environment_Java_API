@@ -3,30 +3,29 @@ package com.hxh_environment.api.domain.spirituals;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.hxh_environment.api.domain.attributes.PrimaryAttribute;
 import com.hxh_environment.api.domain.enums.AttributeName;
 
 public class SpiritualAttributes {
 
-  private final Map<AttributeName, PrimaryAttribute> attributes = new HashMap<>();
+  private final Map<AttributeName, SpiritualAttribute> attributes = new HashMap<>();
 
   private SpiritualAttributes(SpiritualExperience spiritualExp) {
-    attributes.put(AttributeName.SPR, new PrimaryAttribute(spiritualExp));
+    attributes.put(AttributeName.SPR, new SpiritualAttribute(spiritualExp));
 
-    attributes.put(AttributeName.COA, new PrimaryAttribute(spiritualExp));
-    attributes.put(AttributeName.TEN, new PrimaryAttribute(spiritualExp));
-    attributes.put(AttributeName.ZTS, new PrimaryAttribute(spiritualExp));
-    attributes.put(AttributeName.REN, new PrimaryAttribute(spiritualExp));
-    attributes.put(AttributeName.GYO, new PrimaryAttribute(spiritualExp));
+    attributes.put(AttributeName.COA, new SpiritualAttribute(spiritualExp));
+    attributes.put(AttributeName.TEN, new SpiritualAttribute(spiritualExp));
+    attributes.put(AttributeName.ZTS, new SpiritualAttribute(spiritualExp));
+    attributes.put(AttributeName.REN, new SpiritualAttribute(spiritualExp));
+    attributes.put(AttributeName.GYO, new SpiritualAttribute(spiritualExp));
 
     attributes.put(AttributeName.HTS, new Hatsu(spiritualExp));
 
-    attributes.put(AttributeName.RYU, new PrimaryAttribute(spiritualExp));
-    attributes.put(AttributeName.KOU, new PrimaryAttribute(spiritualExp));
-    attributes.put(AttributeName.AOP, new PrimaryAttribute(spiritualExp));
-    attributes.put(AttributeName.MOP, new PrimaryAttribute(spiritualExp));
-    attributes.put(AttributeName.EN, new PrimaryAttribute(spiritualExp));
-    attributes.put(AttributeName.IN, new PrimaryAttribute(spiritualExp));
+    attributes.put(AttributeName.RYU, new SpiritualAttribute(spiritualExp));
+    attributes.put(AttributeName.KOU, new SpiritualAttribute(spiritualExp));
+    attributes.put(AttributeName.AOP, new SpiritualAttribute(spiritualExp));
+    attributes.put(AttributeName.MOP, new SpiritualAttribute(spiritualExp));
+    attributes.put(AttributeName.EN, new SpiritualAttribute(spiritualExp));
+    attributes.put(AttributeName.IN, new SpiritualAttribute(spiritualExp));
 
     for (AttributeName name : attributes.keySet()) {
       attributes.get(name).init(0);
@@ -34,10 +33,10 @@ public class SpiritualAttributes {
   }
 
   // public final int test(AttributeName name) {
-  // return attributes.get(name).test(getLvl());
+  //  return attributes.get(name).test(getLvl());
   // }
 
-  public final PrimaryAttribute get(AttributeName name) {
+  public final SpiritualAttribute get(AttributeName name) {
     return attributes.get(name);
   }
 

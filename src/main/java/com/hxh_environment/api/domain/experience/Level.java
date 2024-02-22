@@ -7,8 +7,17 @@ public abstract class Level implements IUpgradable {
   @Getter
   private int lvl;
 
+  @Getter
+  private final double coefficient;
+
+  public Level(int lvl, double coefficient) {
+    this.lvl = lvl;
+    this.coefficient = coefficient;
+  }
+
   public Level(int lvl) {
     this.lvl = lvl;
+    this.coefficient = 1.0;
   }
 
   // TODO: refactor to upgrade event

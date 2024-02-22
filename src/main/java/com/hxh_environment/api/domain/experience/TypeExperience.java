@@ -13,14 +13,14 @@ public abstract class TypeExperience extends Level {
 
   private final CharacterExperience characterExp;
 
-  public TypeExperience(CharacterExperience characterExp, int exp) {
-    super(0);
+  public TypeExperience(CharacterExperience characterExp, int exp, double coefficient) {
+    super(0, coefficient);
     this.characterExp = characterExp;
     this.exp = exp;
   }
-  
-  public TypeExperience(CharacterExperience characterExp) {
-    super(0);
+
+  public TypeExperience(CharacterExperience characterExp, double coefficient) {
+    super(0, coefficient);
     this.characterExp = characterExp;
     this.exp = 0;
   }

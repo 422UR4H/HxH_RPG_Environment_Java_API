@@ -3,10 +3,9 @@ package com.hxh_environment.api.domain.spirituals;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.hxh_environment.api.domain.attributes.PrimaryAttribute;
 import com.hxh_environment.api.domain.enums.AttributeName;
 
-public class Hatsu extends PrimaryAttribute {
+public class Hatsu extends SpiritualAttribute {
 
   private final Map<AttributeName, NenCategory> categories = new HashMap<>();
 
