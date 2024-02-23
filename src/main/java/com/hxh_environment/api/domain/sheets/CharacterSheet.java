@@ -15,7 +15,6 @@ import lombok.Setter;
 @Data
 public class CharacterSheet {
 
-  private String description;
   private final Profile profile;
   private final CharacterSkills skills;
   private final CharacterExperience exp;

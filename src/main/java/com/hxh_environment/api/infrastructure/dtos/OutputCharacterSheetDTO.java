@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class OutputCharacterSheetDTO {
-  private String description;
-  private String characterClass;
+  private OutputCharacterProfileDTO profile;
+  // private String characterClass;
 }

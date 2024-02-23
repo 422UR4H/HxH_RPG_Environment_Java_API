@@ -22,11 +22,9 @@ public class CharacterSheetModel implements Serializable {
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
   
-  private String description;
-  private String characterClass;
+  private CharacterProfileModel profile;
 
-  public CharacterSheetModel(String description, String characterClass) {
-    this.description = description;
-    this.characterClass = characterClass;
+  public CharacterSheetModel(CharacterProfileModel profile) {
+    this.profile = profile;
   }
 }
